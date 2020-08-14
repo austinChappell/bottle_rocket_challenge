@@ -18,6 +18,9 @@ const Wrapper = styled.div({
   backgroundColor: colors.primaryLight,
   display: 'flex',
   padding: '32px 12px 12px',
+  position: 'sticky',
+  top: 0,
+  zIndex: 1,
 });
 const Box = styled.div({
   '&:first-of-type': {
