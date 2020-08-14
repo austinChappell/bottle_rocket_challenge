@@ -1,18 +1,24 @@
 // External Dependencies
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 
 // Local Dependencies
-import Header from './Header';
+import Header, { HeaderProps } from './Header';
+
+// Local Typings
+interface Props {
+  headerProps?: HeaderProps
+}
 
 // Component Definition
-const BaseLayout: React.FC = ({
+const BaseLayout: React.FC<PropsWithChildren<Props>> = ({
   children,
+  headerProps = {},
 }) => {
   console.log('BaseLayout');
 
   return (
     <>
-      <Header />
+      <Header {...headerProps} />
 
       {children}
     </>

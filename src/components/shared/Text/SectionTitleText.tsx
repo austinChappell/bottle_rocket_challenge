@@ -17,7 +17,6 @@ const SectionTitleText: React.FC<TextProps> = ({
     color={color}
     fontWeight={fontWeight}
     size={size}
-      // eslint-disable-next-line react/jsx-props-no-spreading
     {...props}
   />
 );

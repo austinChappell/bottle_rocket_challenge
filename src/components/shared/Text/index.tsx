@@ -35,6 +35,7 @@ const StyledText = styled.p<TextProps>(({
   fontFamily: `"${fontWeight === 'normal' ? 'Avenir Next Regular' : 'Avenir Next Demi Bold'}", Helvetica`,
   fontSize: FontSize[size],
   fontWeight,
+  lineHeight: '1.0em',
 }));
 
 // Component Definition

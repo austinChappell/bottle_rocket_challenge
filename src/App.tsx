@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
+  Link,
   Route,
   Switch,
 } from 'react-router-dom';
@@ -27,7 +28,15 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <BaseLayout>
+      <BaseLayout
+        headerProps={{
+          rightElement: (
+            <Link to="/map">
+              Map
+            </Link>
+          ),
+        }}
+      >
         <Switch>
           <Route
             exact
