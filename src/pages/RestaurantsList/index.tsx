@@ -14,15 +14,24 @@ import { Restaurant } from 'types/api';
 
 // Local Dependencies
 import RestaurantCard from './RestaurantCard';
+import RestaurantDetails from './RestaurantDetails';
 
 // Component Definition
 const RestaurantsList: React.FC = () => {
+  // setting open state separately so we can keep restaurant
+  // data populated in drawer as it closes
+  const [isOpen, setIsOpen] = useState(false);
   const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant | null>(null);
 
   const restaurants = useSelectRestaurants();
 
+  const handleViewDetails = (restaurant: Restaurant) => {
+    setSelectedRestaurant(restaurant);
+    setIsOpen(true);
+  };
+
   const handleClose = () => {
-    setSelectedRestaurant(null);
+    setIsOpen(false);
   };
 
   return (
@@ -34,7 +43,7 @@ const RestaurantsList: React.FC = () => {
             key={restaurant.name}
           >
             <RestaurantCard
-              onViewDetails={setSelectedRestaurant}
+              onViewDetails={handleViewDetails}
               restaurant={restaurant}
             />
           </GridItem>
@@ -42,7 +51,7 @@ const RestaurantsList: React.FC = () => {
       </Grid>
 
       <Drawer
-        isOpen={!!selectedRestaurant}
+        isOpen={isOpen}
       >
         <Header
           leftElement={(
@@ -66,6 +75,10 @@ const RestaurantsList: React.FC = () => {
             </Link>
           )}
         />
+
+        {selectedRestaurant && (
+          <RestaurantDetails restaurant={selectedRestaurant} />
+        )}
       </Drawer>
     </>
   );
