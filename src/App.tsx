@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 
 // Internal Dependencies
+import mapImage from 'assets/images/icon_map@2x.png';
 import BaseLayout from 'components/layout/BaseLayout';
 import FourOhFour from 'pages/FourOhFour';
 import RestaurantsList from 'pages/RestaurantsList';
@@ -27,7 +28,11 @@ const App: React.FC = () => {
         headerProps={{
           rightElement: (
             <Link to="/map">
-              Map
+              <img
+                alt="go to map"
+                height={24}
+                src={mapImage}
+              />
             </Link>
           ),
         }}
