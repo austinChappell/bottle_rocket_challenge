@@ -1,16 +1,21 @@
 // External Dependencies
-import React from 'react';
+import React, { useState } from 'react';
 
 // Internal Dependencies
 import Grid, { GridItem } from 'components/layout/Grid';
 import { useSelectRestaurants } from 'state/selectors/restaurants';
+import { Restaurant } from 'types/api';
 
 // Local Dependencies
 import RestaurantCard from './RestaurantCard';
 
 // Component Definition
 const RestaurantsList: React.FC = () => {
+  const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant | null>(null);
+
   const restaurants = useSelectRestaurants();
+
+  console.log({ selectedRestaurant });
 
   return (
     <Grid as="ul">
@@ -19,7 +24,10 @@ const RestaurantsList: React.FC = () => {
           as="li"
           key={restaurant.name}
         >
-          <RestaurantCard restaurant={restaurant} />
+          <RestaurantCard
+            onViewDetails={setSelectedRestaurant}
+            restaurant={restaurant}
+          />
         </GridItem>
       ))}
     </Grid>
