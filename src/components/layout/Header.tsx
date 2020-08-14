@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
+import PageTitleText from 'components/shared/Text/PageTitleText';
 // Internal Dependencies
 import colors from 'constants/colors';
 
@@ -11,14 +12,14 @@ const Wrapper = styled.div({
 });
 
 // Component Definition
-const Header: React.FC = ({
-  children,
-}) => {
+const Header: React.FC = () => {
   console.log('Header');
 
   return (
     <Wrapper>
-      {children}
+      <PageTitleText>
+        Lunch Tyme
+      </PageTitleText>
     </Wrapper>
   );
 };

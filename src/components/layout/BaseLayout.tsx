@@ -12,9 +12,7 @@ const BaseLayout: React.FC = ({
 
   return (
     <>
-      <Header>
-        Base Layout
-      </Header>
+      <Header />
 
       {children}
     </>
