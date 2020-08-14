@@ -31,7 +31,6 @@ const StyledText = styled.p<TextProps>(({
   size = 'md',
 }) => ({
   color: fontColors[fontColor],
-  fontDisplay: 'swap',
   fontFamily: `"${fontWeight === 'normal' ? 'Avenir Next Regular' : 'Avenir Next Demi Bold'}", Helvetica`,
   fontSize: FontSize[size],
   fontWeight,
@@ -45,19 +44,17 @@ const Text: React.FC<PropsWithChildren<TextProps>> = ({
   color,
   fontWeight,
   size,
-}) => {
-  console.log('Text');
-
-  return (
-    <StyledText
-      as={as}
-      color={color}
-      fontWeight={fontWeight}
-      size={size}
-    >
-      {children}
-    </StyledText>
-  );
-};
+  ...props
+}) => (
+  <StyledText
+    as={as}
+    color={color}
+    fontWeight={fontWeight}
+    size={size}
+    {...props}
+  >
+    {children}
+  </StyledText>
+);
 
 export default Text;
