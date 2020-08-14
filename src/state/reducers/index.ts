@@ -2,7 +2,12 @@
 import { combineReducers } from 'redux';
 
 // Local Dependencies
-import restaurants from './restaurants';
+import restaurants, { RestaurantsState } from './restaurants';
+
+// Local Typings
+export interface AppState {
+  restaurants: RestaurantsState;
+}
 
 // Local Variables
 const rootReducer = combineReducers({

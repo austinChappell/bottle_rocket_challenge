@@ -13,7 +13,7 @@ interface RestaurantsPayload {
   error?: Error;
 }
 
-interface RestaurantsState {
+export interface RestaurantsState {
   data: Restaurant[];
   error: Error | null;
   isLoading: boolean;

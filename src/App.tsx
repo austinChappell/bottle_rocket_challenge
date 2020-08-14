@@ -1,38 +1,24 @@
+// External Dependencies
 import React, { useEffect } from 'react';
 
+// Internal Dependencies
+import { useSelectRestaurants } from 'state/selectors/restaurants';
 import { useAppDispatch } from 'state/store';
-
-import logo from './logo.svg';
-
-import './App.css';
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
+
+  const restaurants = useSelectRestaurants();
 
   useEffect(() => {
     dispatch({ type: 'RESTAURANTS_GET_REQUEST' });
   }, [dispatch]);
 
+  console.log('restaurants : ', restaurants);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img
-          src={logo}
-          className="App-logo"
-          alt="logo"
-        />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      My App
     </div>
   );
 };
