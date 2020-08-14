@@ -1,12 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import { getRestaurants } from 'api/restaurants';
+
 import logo from './logo.svg';
+
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
+  const fetchRestaurants = async () => {
+    const data = await getRestaurants();
+
+    console.log(data);
+  };
+
+  useEffect(() => {
+    fetchRestaurants();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img
+          src={logo}
+          className="App-logo"
+          alt="logo"
+        />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
@@ -21,6 +39,6 @@ function App() {
       </header>
     </div>
   );
-}
+};
 
 export default App;
