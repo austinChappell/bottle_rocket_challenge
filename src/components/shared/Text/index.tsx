@@ -31,6 +31,8 @@ const StyledText = styled.p<TextProps>(({
   size = 'md',
 }) => ({
   color: fontColors[fontColor],
+  fontDisplay: 'swap',
+  fontFamily: `"${fontWeight === 'normal' ? 'Avenir Next Regular' : 'Avenir Next Demi Bold'}", Helvetica`,
   fontSize: FontSize[size],
   fontWeight,
 }));
