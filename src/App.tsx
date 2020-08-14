@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 
 // Internal Dependencies
+import BaseLayout from 'components/layout/BaseLayout';
 import FourOhFour from 'pages/FourOhFour';
 import RestaurantsList from 'pages/RestaurantsList';
 import RestaurantsMap from 'pages/RestaurantsMap';
@@ -26,22 +27,24 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <Switch>
-        <Route
-          exact
-          path="/"
-        >
-          <RestaurantsList />
-        </Route>
+      <BaseLayout>
+        <Switch>
+          <Route
+            exact
+            path="/"
+          >
+            <RestaurantsList />
+          </Route>
 
-        <Route path="/map">
-          <RestaurantsMap />
-        </Route>
+          <Route path="/map">
+            <RestaurantsMap />
+          </Route>
 
-        <Route>
-          <FourOhFour />
-        </Route>
-      </Switch>
+          <Route>
+            <FourOhFour />
+          </Route>
+        </Switch>
+      </BaseLayout>
     </Router>
   );
 };
