@@ -55,6 +55,7 @@
         "ignoreRestSiblings": false
       }
     ],
+    "consistent-return": "off",
     "simple-import-sort/sort": [
       "error",
       {

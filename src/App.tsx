@@ -10,7 +10,7 @@ const App: React.FC = () => {
   const fetchRestaurants = async () => {
     const data = await getRestaurants();
 
-    console.log(data);
+    console.log(data.restaurants);
   };
 
   useEffect(() => {
