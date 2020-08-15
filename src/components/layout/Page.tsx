@@ -25,14 +25,14 @@ const Page: React.FC<Props> = ({
       payload: { navItem: leftNavItem },
       type: 'UI_SET_LEFT_NAV_ITEM',
     });
-  }, [leftNavItem]);
+  }, [dispatch, leftNavItem]);
 
   useEffect(() => {
     dispatch({
       payload: { navItem: rightNavItem },
       type: 'UI_SET_RIGHT_NAV_ITEM',
     });
-  }, [rightNavItem]);
+  }, [dispatch, rightNavItem]);
 
   useEffect(() => {
     document.title = title ? `Lunch Tyme | ${title}` : 'Lunch Tyme';

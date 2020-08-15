@@ -48,7 +48,7 @@ const Header: React.FC = () => {
       payload: { navHeight: navRefHeight },
       type: 'UI_SET_NAV_HEIGHT',
     });
-  }, [navRefHeight]);
+  }, [dispatch, navRefHeight]);
 
   return (
     <Wrapper ref={navRef}>
