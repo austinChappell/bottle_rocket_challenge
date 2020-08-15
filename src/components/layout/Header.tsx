@@ -1,20 +1,16 @@
 // External Dependencies
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 
 // Internal Dependencies
 import PageTitleText from 'components/shared/Text/PageTitleText';
 import colors from 'constants/colors';
-
-// Local Typings
-export interface HeaderProps {
-  leftElement?: React.ReactElement;
-  rightElement?: React.ReactElement;
-  title?: string;
-}
+import { useSelectLeftNavItem, useSelectRightNavItem } from 'state/selectors/ui';
+import { useAppDispatch } from 'state/store';
 
 // Local Variables
 const Wrapper = styled.div({
+  alignItems: 'center',
   backgroundColor: colors.primaryLight,
   display: 'flex',
   padding: '32px 12px 12px',
@@ -36,22 +32,32 @@ const Box = styled.div({
 });
 
 // Component Definition
-const Header: React.FC<HeaderProps> = ({
-  leftElement,
-  rightElement,
-  title = 'Lunch Tyme',
-}) => {
-  console.log('Header');
+const Header: React.FC = () => {
+  const dispatch = useAppDispatch();
+
+  const leftElement = useSelectLeftNavItem();
+  const rightElement = useSelectRightNavItem();
+
+  const navRef = useRef<HTMLDivElement>(null);
+
+  const navRefHeight = navRef.current?.clientHeight ?? 0;
+
+  useEffect(() => {
+    dispatch({
+      payload: { navHeight: navRefHeight },
+      type: 'UI_SET_NAV_HEIGHT',
+    });
+  }, [navRefHeight]);
 
   return (
-    <Wrapper>
+    <Wrapper ref={navRef}>
       <Box>
         {leftElement}
       </Box>
 
       <Box>
         <PageTitleText>
-          {title}
+          Lunch Tyme
         </PageTitleText>
       </Box>
 

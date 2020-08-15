@@ -1,16 +1,11 @@
 // External Dependencies
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 
 import colors from 'constants/colors';
 
 // Local Dependencies
-import Header, { HeaderProps } from './Header';
-
-// Local Typings
-interface Props {
-  headerProps?: HeaderProps
-}
+import Header from './Header';
 
 // Local Variables
 const Body = styled.div({
@@ -25,21 +20,16 @@ const Main = styled.main({
 });
 
 // Component Definition
-const BaseLayout: React.FC<PropsWithChildren<Props>> = ({
+const BaseLayout: React.FC = ({
   children,
-  headerProps = {},
-}) => {
-  console.log('BaseLayout');
+}) => (
+  <Body>
+    <Header />
 
-  return (
-    <Body>
-      <Header {...headerProps} />
-
-      <Main>
-        {children}
-      </Main>
-    </Body>
-  );
-};
+    <Main>
+      {children}
+    </Main>
+  </Body>
+);
 
 export default BaseLayout;

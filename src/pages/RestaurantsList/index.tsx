@@ -1,14 +1,12 @@
 // External Dependencies
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 // Internal Dependencies
-import backImage from 'assets/images/ic_webBack@2x.png';
-import mapImage from 'assets/images/icon_map@2x.png';
 import Drawer from 'components/layout/Drawer';
 import Grid, { GridItem } from 'components/layout/Grid';
-import Header from 'components/layout/Header';
-import IconButton from 'components/shared/IconButton';
+import Page from 'components/layout/Page';
+import BackButton from 'components/shared/NavElements/BackButton';
+import MapLink from 'components/shared/NavElements/MapLink';
 import { useSelectRestaurants } from 'state/selectors/restaurants';
 import { Restaurant } from 'types/api';
 
@@ -35,7 +33,13 @@ const RestaurantsList: React.FC = () => {
   };
 
   return (
-    <>
+    <Page
+      leftNavItem={isOpen
+        ? <BackButton onClick={handleClose} />
+        : null}
+      rightNavItem={<MapLink />}
+      title="Restaurants"
+    >
       <Grid as="ul">
         {restaurants.map((restaurant) => (
           <GridItem
@@ -53,34 +57,11 @@ const RestaurantsList: React.FC = () => {
       <Drawer
         isOpen={isOpen}
       >
-        <Header
-          leftElement={(
-            <IconButton
-              onClick={handleClose}
-            >
-              <img
-                alt="go back"
-                height={24}
-                src={backImage}
-              />
-            </IconButton>
-          )}
-          rightElement={(
-            <Link to="/map">
-              <img
-                alt="go to map"
-                height={24}
-                src={mapImage}
-              />
-            </Link>
-          )}
-        />
-
         {selectedRestaurant && (
           <RestaurantDetails restaurant={selectedRestaurant} />
         )}
       </Drawer>
-    </>
+    </Page>
   );
 };
 

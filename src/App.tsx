@@ -2,13 +2,11 @@
 import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
-  Link,
   Route,
   Switch,
 } from 'react-router-dom';
 
 // Internal Dependencies
-import mapImage from 'assets/images/icon_map@2x.png';
 import BaseLayout from 'components/layout/BaseLayout';
 import FourOhFour from 'pages/FourOhFour';
 import RestaurantsList from 'pages/RestaurantsList';
@@ -24,19 +22,7 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <BaseLayout
-        headerProps={{
-          rightElement: (
-            <Link to="/map">
-              <img
-                alt="go to map"
-                height={24}
-                src={mapImage}
-              />
-            </Link>
-          ),
-        }}
-      >
+      <BaseLayout>
         <Switch>
           <Route
             exact
