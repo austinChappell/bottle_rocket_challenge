@@ -10,6 +10,7 @@ import PinIcon from './PinIcon';
 
 // Local Typings
 interface Props {
+  readOnly?: boolean;
   lat: number;
   lng: number;
   text: string;
@@ -22,10 +23,6 @@ const Wrapper = styled.div({
   },
 
   '&:hover': {
-    '& svg': {
-      transform: 'scale(1.2)',
-    },
-
     '& span': {
       backgroundColor: colors.white,
       border: `1px solid ${colors.black}`,
@@ -40,6 +37,10 @@ const Wrapper = styled.div({
       width: 60,
       zIndex: 10,
     },
+
+    '& svg': {
+      transform: 'scale(1.2)',
+    },
   },
 
   cursor: 'pointer',
@@ -47,27 +48,30 @@ const Wrapper = styled.div({
 
 // Component Definition
 const Pin: React.FC<Props> = ({
+  readOnly,
   text,
 }) => {
   const handleClick = () => {
     console.log('I was clicked');
   };
 
-  return (
-    <Wrapper
-      onClick={handleClick}
-      role="button"
-    >
-      <PinIcon />
-
-      <BodyText
-        as="span"
-        size="sm"
+  return readOnly
+    ? <PinIcon />
+    : (
+      <Wrapper
+        onClick={handleClick}
+        role="button"
       >
-        {text}
-      </BodyText>
-    </Wrapper>
-  );
+        <PinIcon />
+
+        <BodyText
+          as="span"
+          size="sm"
+        >
+          {text}
+        </BodyText>
+      </Wrapper>
+    );
 };
 
 export default Pin;

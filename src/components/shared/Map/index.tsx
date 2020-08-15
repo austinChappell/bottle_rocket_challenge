@@ -1,19 +1,25 @@
+// External Dependencies
 import React from 'react';
-import { envKeys } from 'config/envKeys';
 import GoogleMapReact from 'google-map-react';
 
-import { useSelectRestaurants, useSelectRestaurantsIsLoading } from 'state/selectors/restaurants';
+// Internal Dependencies
+import { envKeys } from 'config/envKeys';
+import { Restaurant } from 'types/api';
 
+// Local Dependencies
 import Pin from './Pin';
 
-const Map: React.FC = () => {
-  const isLoading = useSelectRestaurantsIsLoading();
-  const restaurants = useSelectRestaurants();
+// Local Typings
+interface Props {
+  readOnly?: boolean;
+  restaurants: Restaurant[]
+}
 
-  if (isLoading) {
-    return (<div>Loading...</div>);
-  }
-
+// Component Definition
+const Map: React.FC<Props> = ({
+  readOnly,
+  restaurants,
+}) => {
   if (restaurants.length === 0) {
     return null;
   }
@@ -35,6 +41,7 @@ const Map: React.FC = () => {
             key={name}
             lat={location.lat}
             lng={location.lng}
+            readOnly={readOnly}
             text={name}
           />
         ))}
