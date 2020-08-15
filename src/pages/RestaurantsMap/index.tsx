@@ -7,6 +7,8 @@ import ListLink from 'components/shared/NavElements/ListLink';
 import { useSelectRestaurants } from 'state/selectors/restaurants';
 import { Restaurant } from 'types/api';
 
+import RestaurantPreview from './RestaurantPreview';
+
 // Component Definition
 const RestaurantsMap: React.FC = () => {
   const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant | null>(null);
@@ -25,6 +27,10 @@ const RestaurantsMap: React.FC = () => {
         onClickRestaurant={setSelectedRestaurant}
         restaurants={restaurants}
       />
+
+      {selectedRestaurant && (
+        <RestaurantPreview selectedRestaurant={selectedRestaurant} />
+      )}
     </Page>
   );
 };
