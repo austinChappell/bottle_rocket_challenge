@@ -11,7 +11,7 @@ interface Props {
 }
 
 // Component Definition
-const PreviewList: React.FC<Props> = ({
+const PreviewDetails: React.FC<Props> = ({
   selectedRestaurant: {
     location,
   },
@@ -35,4 +35,4 @@ const PreviewList: React.FC<Props> = ({
   </div>
 );
 
-export default PreviewList;
+export default PreviewDetails;

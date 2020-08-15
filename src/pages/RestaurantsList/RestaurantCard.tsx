@@ -21,6 +21,7 @@ const Wrapper = styled.div<WrapperProps>((props) => ({
   background: `url(${props.backgroundImageSrc})`,
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
+  cursor: 'pointer',
   minHeight: 300,
   position: 'relative',
 }));

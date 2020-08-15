@@ -2,14 +2,16 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
+// Internal Dependencies
 import Space from 'components/shared/Space';
 import SectionTitleText from 'components/shared/Text/SectionTitleText';
 import SubTitleText from 'components/shared/Text/SubTitleText';
 import { mediaQueries } from 'constants/breakpoints';
 import { Restaurant } from 'types/api';
 
-import PreviewList from './PreviewList';
-import PreviewSelection from './PreviewSelection';
+// Local Dependencies
+import PreviewDetails from './PreviewDetails';
+import PreviewImage from './PreviewImage';
 
 // Local Typings
 interface Props {
@@ -61,9 +63,9 @@ const RestaurantPreview: React.FC<Props> = ({
       </TitleContainer>
 
       <Wrapper>
-        <PreviewSelection selectedRestaurant={selectedRestaurant} />
+        <PreviewImage selectedRestaurant={selectedRestaurant} />
 
-        <PreviewList selectedRestaurant={selectedRestaurant} />
+        <PreviewDetails selectedRestaurant={selectedRestaurant} />
       </Wrapper>
     </Section>
   );

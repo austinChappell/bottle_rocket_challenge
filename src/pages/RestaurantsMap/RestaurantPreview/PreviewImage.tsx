@@ -2,9 +2,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import Space from 'components/shared/Space';
-import SectionTitleText from 'components/shared/Text/SectionTitleText';
-import SubTitleText from 'components/shared/Text/SubTitleText';
+// Internal Dependencies
 import { Restaurant } from 'types/api';
 
 // Local Typings
@@ -19,7 +17,7 @@ const StyledImg = styled.img({
 });
 
 // Component Definition
-const PreviewSelection: React.FC<Props> = ({
+const PreviewImage: React.FC<Props> = ({
   selectedRestaurant,
 }) => (
   <div>
@@ -30,4 +28,4 @@ const PreviewSelection: React.FC<Props> = ({
   </div>
 );
 
-export default PreviewSelection;
+export default PreviewImage;
