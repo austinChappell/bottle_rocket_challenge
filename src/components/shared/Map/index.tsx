@@ -1,5 +1,6 @@
 // External Dependencies
 import React from 'react';
+import styled from '@emotion/styled';
 import GoogleMapReact from 'google-map-react';
 
 // Internal Dependencies
@@ -10,15 +11,25 @@ import { Restaurant } from 'types/api';
 import Pin from './Pin';
 
 // Local Typings
-interface Props {
+interface WrapperProps {
   mapHeight?: number | string;
+}
+interface Props extends WrapperProps {
+  defaultZoom?: number;
   onClickRestaurant?: (restaurant: Restaurant) => void;
   readOnly?: boolean;
-  restaurants: Restaurant[]
+  restaurants: Restaurant[];
 }
+
+// Local Variables
+const Wrapper = styled.div<WrapperProps>(({ mapHeight }) => ({
+  height: mapHeight,
+  width: '100%',
+}));
 
 // Component Definition
 const Map: React.FC<Props> = ({
+  defaultZoom = 14,
   mapHeight = 500,
   onClickRestaurant,
   readOnly,
@@ -31,11 +42,11 @@ const Map: React.FC<Props> = ({
   const [firstRestaurant] = restaurants;
 
   return (
-    <div style={{ height: mapHeight, width: '100%' }}>
+    <Wrapper mapHeight={mapHeight}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: envKeys.REACT_APP_GOOGLE_MAPS_API_KEY }}
         defaultCenter={firstRestaurant.location}
-        defaultZoom={14}
+        defaultZoom={defaultZoom}
       >
         {restaurants.map((restaurant) => {
           const { location } = restaurant;
@@ -52,7 +63,7 @@ const Map: React.FC<Props> = ({
           );
         })}
       </GoogleMapReact>
-    </div>
+    </Wrapper>
   );
 };
 

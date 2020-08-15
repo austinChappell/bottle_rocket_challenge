@@ -8,6 +8,7 @@ import Space from 'components/shared/Space';
 import BodyText from 'components/shared/Text/BodyText';
 import SectionTitleText from 'components/shared/Text/SectionTitleText';
 import SubTitleText from 'components/shared/Text/SubTitleText';
+import { mediaQueries } from 'constants/breakpoints';
 import colors from 'constants/colors';
 import { Restaurant } from 'types/api';
 import { formatPhoneNumber } from 'utils/formatPhoneNumber';
@@ -20,6 +21,13 @@ interface Props {
 // Local Variables
 const MapContainer = styled.div({
   height: 180,
+
+  [`${mediaQueries.isTabletMin}`]: {
+    height: 250,
+  },
+  [`${mediaQueries.isDesktopMin}`]: {
+    height: 400,
+  },
 });
 const NameBanner = styled.div({
   backgroundColor: colors.primaryDark,
@@ -28,6 +36,13 @@ const NameBanner = styled.div({
   height: 60,
   justifyContent: 'center',
   padding: '0 12px',
+
+  [`${mediaQueries.isTabletMin}`]: {
+    height: 80,
+  },
+  [`${mediaQueries.isDesktopMin}`]: {
+    height: 100,
+  },
 });
 
 // Component Definition
@@ -43,6 +58,7 @@ const RestaurantDetails: React.FC<Props> = ({
     <div>
       <MapContainer>
         <Map
+          defaultZoom={15}
           mapHeight="100%"
           readOnly
           restaurants={[restaurant]}

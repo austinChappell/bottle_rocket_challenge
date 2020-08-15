@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import Page from 'components/layout/Page';
 import Map from 'components/shared/Map';
-import ListLink from 'components/shared/NavElements/ListLink';
+import CloseLink from 'components/shared/NavElements/CloseLink';
 import { useSelectRestaurants } from 'state/selectors/restaurants';
 import { Restaurant } from 'types/api';
 
@@ -20,7 +20,7 @@ const RestaurantsMap: React.FC = () => {
   return (
     <Page
       leftNavItem={null}
-      rightNavItem={<ListLink />}
+      rightNavItem={<CloseLink />}
       title="Map"
     >
       <Map
