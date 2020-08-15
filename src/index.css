@@ -70,4 +70,6 @@ a {
 
 * {
 	box-sizing: border-box;
+
+	transition: 500ms background-color, color;
 }
