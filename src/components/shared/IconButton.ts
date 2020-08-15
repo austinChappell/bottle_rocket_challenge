@@ -10,6 +10,7 @@ interface Props {
 const IconButton = styled.button<Props>(({ height }) => ({
   backgroundColor: 'transparent',
   border: 'none',
+  cursor: 'pointer',
   height,
 }));
 
