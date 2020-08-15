@@ -10,15 +10,19 @@ import { useSelectLeftNavItem, useSelectRightNavItem } from 'state/selectors/ui'
 import { useAppDispatch } from 'state/store';
 import styled, { useAppTheme } from 'utils/styled';
 
+import ThemeToggleButton from './ThemeToggleButton';
+
 // Local Variables
+const Nav = styled.nav({
+  position: 'sticky',
+  top: 0,
+  zIndex: 1,
+});
 const Wrapper = styled.div(({ theme }) => ({
   alignItems: 'center',
   backgroundColor: colors[theme.palette.navBarBackground],
   display: 'flex',
   padding: '32px 12px 8px',
-  position: 'sticky',
-  top: 0,
-  zIndex: 1,
 
   [`${mediaQueries.isTabletMin}`]: {
     padding: '32px 24px 12px',
@@ -27,6 +31,13 @@ const Wrapper = styled.div(({ theme }) => ({
     padding: '32px 32px 12px',
   },
 }));
+
+const TopItemContainer = styled.div({
+  left: 0,
+  position: 'fixed',
+  right: 0,
+  top: 0,
+});
 
 const Box = styled.div({
   '&:first-of-type': {
@@ -50,7 +61,7 @@ const Header: React.FC = () => {
   const leftElement = useSelectLeftNavItem();
   const rightElement = useSelectRightNavItem();
 
-  const navRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLElement>(null);
 
   const navRefHeight = navRef.current?.clientHeight ?? 0;
 
@@ -62,23 +73,30 @@ const Header: React.FC = () => {
   }, [dispatch, navRefHeight]);
 
   return (
-    <Wrapper ref={navRef}>
-      <Box>
-        {leftElement}
-      </Box>
+    <Nav ref={navRef}>
+      <TopItemContainer>
+        <ThemeToggleButton />
+      </TopItemContainer>
 
-      <Box>
-        <Link to="/">
-          <PageTitleText color={theme.palette.navBarText}>
-            Lunch Tyme
-          </PageTitleText>
-        </Link>
-      </Box>
+      <Wrapper>
+        <Box>
+          {leftElement}
+        </Box>
 
-      <Box>
-        {rightElement}
-      </Box>
-    </Wrapper>
+        <Box>
+          <Link to="/">
+            <PageTitleText color={theme.palette.navBarText}>
+              Lunch Tyme
+            </PageTitleText>
+          </Link>
+        </Box>
+
+        <Box>
+          {rightElement}
+        </Box>
+
+      </Wrapper>
+    </Nav>
   );
 };
 

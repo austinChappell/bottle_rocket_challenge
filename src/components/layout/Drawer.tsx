@@ -2,7 +2,6 @@
 import React, { PropsWithChildren } from 'react';
 
 // Internal Dependencies
-import colors from 'constants/colors';
 import { useSelectNavHeight } from 'state/selectors/ui';
 import styled from 'utils/styled';
 
