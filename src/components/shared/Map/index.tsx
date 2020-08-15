@@ -52,6 +52,7 @@ const Map: React.FC<Props> = ({
         defaultCenter={firstRestaurant.location}
         defaultZoom={defaultZoom}
         options={{
+          backgroundColor: theme.backgroundColor,
           styles: theme.mapStyles,
         }}
       >
