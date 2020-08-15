@@ -2,12 +2,13 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
+import Map from 'components/shared/Map';
+// Internal Dependencies
 import Space from 'components/shared/Space';
 import BodyText from 'components/shared/Text/BodyText';
 import SectionTitleText from 'components/shared/Text/SectionTitleText';
 import SubTitleText from 'components/shared/Text/SubTitleText';
 import colors from 'constants/colors';
-// Internal Dependencies
 import { Restaurant } from 'types/api';
 import { formatPhoneNumber } from 'utils/formatPhoneNumber';
 
@@ -33,8 +34,6 @@ const NameBanner = styled.div({
 const RestaurantDetails: React.FC<Props> = ({
   restaurant,
 }) => {
-  console.log('Restaurant details', restaurant);
-
   const {
     contact,
     location,
@@ -43,7 +42,11 @@ const RestaurantDetails: React.FC<Props> = ({
   return (
     <div>
       <MapContainer>
-        Map goes here
+        <Map
+          mapHeight="100%"
+          readOnly
+          restaurants={[restaurant]}
+        />
       </MapContainer>
 
       <NameBanner>

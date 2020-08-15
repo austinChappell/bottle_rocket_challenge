@@ -11,12 +11,14 @@ import Pin from './Pin';
 
 // Local Typings
 interface Props {
+  mapHeight?: number | string;
   readOnly?: boolean;
   restaurants: Restaurant[]
 }
 
 // Component Definition
 const Map: React.FC<Props> = ({
+  mapHeight = 500,
   readOnly,
   restaurants,
 }) => {
@@ -27,7 +29,7 @@ const Map: React.FC<Props> = ({
   const [firstRestaurant] = restaurants;
 
   return (
-    <div style={{ height: 500, width: '100%' }}>
+    <div style={{ height: mapHeight, width: '100%' }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: envKeys.REACT_APP_GOOGLE_MAPS_API_KEY }}
         defaultCenter={firstRestaurant.location}
