@@ -63,3 +63,7 @@ table {
 *:focus {
 	outline-color: #999999;
 }
+
+a {
+	text-decoration: none;
+}

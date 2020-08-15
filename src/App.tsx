@@ -25,19 +25,17 @@ const App: React.FC = () => {
       <BaseLayout>
         <Switch>
           <Route
+            component={RestaurantsList}
             exact
             path="/"
-          >
-            <RestaurantsList />
-          </Route>
+          />
 
-          <Route path="/map">
-            <RestaurantsMap />
-          </Route>
+          <Route
+            component={RestaurantsMap}
+            path="/map"
+          />
 
-          <Route>
-            <FourOhFour />
-          </Route>
+          <Route component={FourOhFour} />
         </Switch>
       </BaseLayout>
     </Router>

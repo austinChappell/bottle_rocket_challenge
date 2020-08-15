@@ -1,5 +1,6 @@
 // External Dependencies
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 
 // Internal Dependencies
@@ -56,9 +57,11 @@ const Header: React.FC = () => {
       </Box>
 
       <Box>
-        <PageTitleText>
-          Lunch Tyme
-        </PageTitleText>
+        <Link to="/">
+          <PageTitleText>
+            Lunch Tyme
+          </PageTitleText>
+        </Link>
       </Box>
 
       <Box>
