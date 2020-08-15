@@ -23,7 +23,7 @@ const App: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <ThemeProvider theme={themes.dark}>
+    <ThemeProvider theme={themes.light}>
       <Router>
         <BaseLayout>
           <Switch>

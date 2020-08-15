@@ -4,7 +4,7 @@ import React, { PropsWithChildren } from 'react';
 // Internal Dependencies
 import { mediaQueries } from 'constants/breakpoints';
 import colors from 'constants/colors';
-import styled from 'utils/styled';
+import styled, { Color } from 'utils/styled';
 
 // Local Typings
 enum FontSize {
@@ -12,10 +12,9 @@ enum FontSize {
   md = 16,
   sm = 12,
 }
-type FontColor = 'black' | 'white';
 export interface TextProps {
   as?: 'p' | 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  color?: FontColor;
+  color?: Color;
   fontWeight?: 'normal' | 'bold';
   ignoreTheme?: boolean;
   isResponsive?: boolean;

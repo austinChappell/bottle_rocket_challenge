@@ -1,7 +1,6 @@
 // External Dependencies
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import styled from '@emotion/styled';
 
 // Internal Dependencies
 import PageTitleText from 'components/shared/Text/PageTitleText';
@@ -9,11 +8,12 @@ import { mediaQueries } from 'constants/breakpoints';
 import colors from 'constants/colors';
 import { useSelectLeftNavItem, useSelectRightNavItem } from 'state/selectors/ui';
 import { useAppDispatch } from 'state/store';
+import styled, { useAppTheme } from 'utils/styled';
 
 // Local Variables
-const Wrapper = styled.div({
+const Wrapper = styled.div(({ theme }) => ({
   alignItems: 'center',
-  backgroundColor: colors.primaryLight,
+  backgroundColor: colors[theme.palette.navBarBackground],
   display: 'flex',
   padding: '32px 12px 8px',
   position: 'sticky',
@@ -26,7 +26,8 @@ const Wrapper = styled.div({
   [`${mediaQueries.isDesktopMin}`]: {
     padding: '32px 32px 12px',
   },
-});
+}));
+
 const Box = styled.div({
   '&:first-of-type': {
     justifyContent: 'flex-start',
@@ -43,6 +44,8 @@ const Box = styled.div({
 // Component Definition
 const Header: React.FC = () => {
   const dispatch = useAppDispatch();
+
+  const theme = useAppTheme();
 
   const leftElement = useSelectLeftNavItem();
   const rightElement = useSelectRightNavItem();
@@ -66,7 +69,7 @@ const Header: React.FC = () => {
 
       <Box>
         <Link to="/">
-          <PageTitleText ignoreTheme>
+          <PageTitleText color={theme.palette.navBarText}>
             Lunch Tyme
           </PageTitleText>
         </Link>
