@@ -27,6 +27,19 @@ const App: React.FC = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    const watchId = navigator.geolocation?.watchPosition((position) => {
+      dispatch({
+        payload: { geoLocation: position },
+        type: 'GENERAL_SET_GEO_LOCATION',
+      });
+    });
+
+    return () => {
+      navigator.geolocation?.clearWatch(watchId);
+    };
+  }, [dispatch]);
+
+  useEffect(() => {
     setThemeInStorage(themeVariant);
   }, [themeVariant]);
 

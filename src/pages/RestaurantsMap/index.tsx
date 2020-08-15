@@ -15,8 +15,6 @@ const RestaurantsMap: React.FC = () => {
 
   const restaurants = useSelectRestaurants();
 
-  console.log('selected restaurant : ', selectedRestaurant);
-
   return (
     <Page
       leftNavItem={null}

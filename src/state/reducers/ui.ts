@@ -1,3 +1,4 @@
+// Internal Dependencies
 import { ThemeVariant } from 'utils/styled';
 import { getThemeFromStorage } from 'utils/themeStorage';
 
