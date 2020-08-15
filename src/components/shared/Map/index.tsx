@@ -9,6 +9,7 @@ import { Restaurant } from 'types/api';
 
 // Local Dependencies
 import Pin from './Pin';
+import { dark } from './styles';
 
 // Local Typings
 interface WrapperProps {
@@ -47,6 +48,9 @@ const Map: React.FC<Props> = ({
         bootstrapURLKeys={{ key: envKeys.REACT_APP_GOOGLE_MAPS_API_KEY }}
         defaultCenter={firstRestaurant.location}
         defaultZoom={defaultZoom}
+        options={{
+          styles: dark,
+        }}
       >
         {restaurants.map((restaurant) => {
           const { location } = restaurant;

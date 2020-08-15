@@ -2,8 +2,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import Map from 'components/shared/Map';
 // Internal Dependencies
+import Map from 'components/shared/Map';
 import Space from 'components/shared/Space';
 import BodyText from 'components/shared/Text/BodyText';
 import SectionTitleText from 'components/shared/Text/SectionTitleText';
