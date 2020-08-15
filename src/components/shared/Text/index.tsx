@@ -2,6 +2,7 @@
 import React, { PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
 
+import { mediaQueries } from 'constants/breakpoints';
 // Internal Dependencies
 import colors from 'constants/colors';
 
@@ -35,6 +36,13 @@ const StyledText = styled.p<TextProps>(({
   fontSize: FontSize[size],
   fontWeight,
   lineHeight: '1.0em',
+
+  [`${mediaQueries.isTabletMin}`]: {
+    fontSize: FontSize[size] * 1.3,
+  },
+  [`${mediaQueries.isDesktopMin}`]: {
+    fontSize: FontSize[size] * 1.6,
+  },
 }));
 
 // Component Definition

@@ -2,14 +2,17 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
+// Internal Dependencies
+import BodyText from 'components/shared/Text/BodyText';
 import colors from 'constants/colors';
+import { Restaurant } from 'types/api';
 
-import BodyText from '../Text/BodyText';
-
+// Local Dependencies
 import PinIcon from './PinIcon';
 
 // Local Typings
 interface Props {
+  onClick?: (restaurant: Restaurant) => void;
   readOnly?: boolean;
   lat: number;
   lng: number;

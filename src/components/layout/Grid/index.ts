@@ -19,7 +19,7 @@ const Grid = styled.div<Props>({
 export const GridItem = styled.div<Props>({
   flexBasis: '50%',
 
-  [mediaQueries.isMobile]: {
+  [mediaQueries.isMobileMax]: {
     flexBasis: '100%',
   },
 });

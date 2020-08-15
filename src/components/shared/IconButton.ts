@@ -1,17 +1,15 @@
 // External Dependencies
 import styled from '@emotion/styled';
 
-// Local Typings
-interface Props {
-  height: number;
-}
+// Internal Dependencies
+import { navButtonHeightStylesWithMediaQueries } from 'constants/sizes';
 
 // Component Definition
-const IconButton = styled.button<Props>(({ height }) => ({
+const IconButton = styled.button({
   backgroundColor: 'transparent',
   border: 'none',
   cursor: 'pointer',
-  height,
-}));
+  ...navButtonHeightStylesWithMediaQueries,
+});
 
 export default IconButton;
