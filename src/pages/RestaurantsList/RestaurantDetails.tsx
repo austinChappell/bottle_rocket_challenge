@@ -19,6 +19,9 @@ interface Props {
 }
 
 // Local Variables
+const mobilePadding = 12;
+const tabletPadding = 24;
+const desktopPadding = 32;
 const MapContainer = styled.div({
   height: 180,
 
@@ -35,13 +38,25 @@ const NameBanner = styled.div({
   flexDirection: 'column',
   height: 60,
   justifyContent: 'center',
-  padding: '0 12px',
+  padding: `0 ${mobilePadding}px`,
 
   [`${mediaQueries.isTabletMin}`]: {
     height: 80,
+    padding: `0 ${tabletPadding}px`,
   },
   [`${mediaQueries.isDesktopMin}`]: {
     height: 100,
+    padding: `0 ${desktopPadding}px`,
+  },
+});
+const DetailsContainer = styled.div({
+  padding: `16px ${mobilePadding}px`,
+
+  [`${mediaQueries.isTabletMin}`]: {
+    padding: `24px ${tabletPadding}px`,
+  },
+  [`${mediaQueries.isDesktopMin}`]: {
+    padding: `32px ${desktopPadding}px`,
   },
 });
 
@@ -80,43 +95,37 @@ const RestaurantDetails: React.FC<Props> = ({
         </Space>
       </NameBanner>
 
-      <Space
-        clone
-        px={12}
-        py={16}
-      >
-        <div>
-          <BodyText>
-            {location.address}
-          </BodyText>
+      <DetailsContainer>
+        <BodyText>
+          {location.address}
+        </BodyText>
 
-          <BodyText>
-            {location.city}, {location.state} {location.postalCode}
-          </BodyText>
+        <BodyText>
+          {location.city}, {location.state} {location.postalCode}
+        </BodyText>
 
-          {contact?.phone && (
-            <Space
-              clone
-              mt={26}
-            >
-              <BodyText>
-                {formatPhoneNumber(contact.phone)}
-              </BodyText>
-            </Space>
-          )}
+        {contact?.phone && (
+          <Space
+            clone
+            mt={26}
+          >
+            <BodyText>
+              {formatPhoneNumber(contact.phone)}
+            </BodyText>
+          </Space>
+        )}
 
-          {contact?.twitter && (
-            <Space
-              clone
-              mt={26}
-            >
-              <BodyText>
-                @{contact.twitter}
-              </BodyText>
-            </Space>
-          )}
-        </div>
-      </Space>
+        {contact?.twitter && (
+          <Space
+            clone
+            mt={26}
+          >
+            <BodyText>
+              @{contact.twitter}
+            </BodyText>
+          </Space>
+        )}
+      </DetailsContainer>
     </div>
   );
 };
