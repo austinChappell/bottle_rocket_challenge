@@ -1,8 +1,10 @@
+// External Dependencies
 import React, { PropsWithChildren } from 'react';
-import styled from '@emotion/styled';
 
+// Internal Dependencies
 import colors from 'constants/colors';
 import { useSelectNavHeight } from 'state/selectors/ui';
+import styled from 'utils/styled';
 
 // Local Typings
 interface Props {
@@ -26,7 +28,7 @@ const getTranslateX = ({
 };
 
 const Wrapper = styled.div<WrapperProps>((props) => ({
-  backgroundColor: colors.white,
+  backgroundColor: props.theme.backgroundColor,
   bottom: 0,
   left: 0,
   paddingTop: props.navHeight,

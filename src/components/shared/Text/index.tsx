@@ -1,10 +1,10 @@
 // External Dependencies
 import React, { PropsWithChildren } from 'react';
-import styled from '@emotion/styled';
 
-import { mediaQueries } from 'constants/breakpoints';
 // Internal Dependencies
+import { mediaQueries } from 'constants/breakpoints';
 import colors from 'constants/colors';
+import styled from 'utils/styled';
 
 // Local Typings
 enum FontSize {
@@ -17,23 +17,21 @@ export interface TextProps {
   as?: 'p' | 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   color?: FontColor;
   fontWeight?: 'normal' | 'bold';
+  ignoreTheme?: boolean;
   isResponsive?: boolean;
   size?: keyof typeof FontSize;
 }
 
 // Local Variables
-const fontColors: Record<FontColor, string> = {
-  black: colors.black,
-  white: colors.white,
-};
-
 const StyledText = styled.p<TextProps>(({
   color: fontColor = 'black',
   fontWeight = 'normal',
+  ignoreTheme,
   isResponsive = true,
   size = 'md',
+  theme,
 }) => ({
-  color: fontColors[fontColor],
+  color: ignoreTheme ? colors[fontColor] : theme.colors[fontColor],
   fontFamily: `"${fontWeight === 'normal' ? 'Avenir Next Regular' : 'Avenir Next Demi Bold'}", Helvetica`,
   fontSize: FontSize[size],
   fontWeight,

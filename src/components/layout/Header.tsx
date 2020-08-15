@@ -66,7 +66,7 @@ const Header: React.FC = () => {
 
       <Box>
         <Link to="/">
-          <PageTitleText>
+          <PageTitleText ignoreTheme>
             Lunch Tyme
           </PageTitleText>
         </Link>

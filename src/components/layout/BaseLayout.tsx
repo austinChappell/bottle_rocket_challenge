@@ -1,8 +1,9 @@
 // External Dependencies
 import React from 'react';
-import styled from '@emotion/styled';
 
+// Internal Dependencies
 import colors from 'constants/colors';
+import styled from 'utils/styled';
 
 // Local Dependencies
 import Header from './Header';
@@ -15,9 +16,10 @@ const Body = styled.div({
   flexDirection: 'column',
   minHeight: '100vh',
 });
-const Main = styled.main({
+const Main = styled.main(({ theme }) => ({
+  backgroundColor: theme.backgroundColor,
   flexGrow: 1,
-});
+}));
 
 // Component Definition
 const BaseLayout: React.FC = ({

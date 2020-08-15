@@ -1,6 +1,5 @@
 // External Dependencies
 import React from 'react';
-import styled from '@emotion/styled';
 
 // Internal Dependencies
 import Map from 'components/shared/Map';
@@ -12,6 +11,7 @@ import { mediaQueries } from 'constants/breakpoints';
 import colors from 'constants/colors';
 import { Restaurant } from 'types/api';
 import { formatPhoneNumber } from 'utils/formatPhoneNumber';
+import styled from 'utils/styled';
 
 // Local Typings
 interface Props {
@@ -81,7 +81,7 @@ const RestaurantDetails: React.FC<Props> = ({
       </MapContainer>
 
       <NameBanner>
-        <SectionTitleText>
+        <SectionTitleText ignoreTheme>
           {restaurant.name}
         </SectionTitleText>
 
@@ -89,7 +89,7 @@ const RestaurantDetails: React.FC<Props> = ({
           clone
           mt={6}
         >
-          <SubTitleText>
+          <SubTitleText ignoreTheme>
             {restaurant.category}
           </SubTitleText>
         </Space>

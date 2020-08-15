@@ -72,6 +72,7 @@ const Pin: React.FC<Props> = ({
 
         <BodyText
           as="span"
+          ignoreTheme
           isResponsive={false}
           size="sm"
         >

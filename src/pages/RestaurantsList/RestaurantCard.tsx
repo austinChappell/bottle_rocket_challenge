@@ -64,7 +64,7 @@ const RestaurantCard: React.FC<Props> = ({
       tabIndex={0}
     >
       <TextContainer>
-        <SectionTitleText>
+        <SectionTitleText ignoreTheme>
           {restaurant.name}
         </SectionTitleText>
 
@@ -72,7 +72,7 @@ const RestaurantCard: React.FC<Props> = ({
           clone
           py={6}
         >
-          <SubTitleText>
+          <SubTitleText ignoreTheme>
             {restaurant.category}
           </SubTitleText>
         </Space>

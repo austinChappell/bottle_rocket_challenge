@@ -18,7 +18,7 @@ const PreviewDetails: React.FC<Props> = ({
 }) => (
   <div>
     <BodyText
-      color="white"
+      color="black"
       size="sm"
     >
       {location.address}
@@ -26,7 +26,7 @@ const PreviewDetails: React.FC<Props> = ({
 
     <Space my={6}>
       <BodyText
-        color="white"
+        color="black"
         size="sm"
       >
         {location.city}, {location.state} {location.postalCode}

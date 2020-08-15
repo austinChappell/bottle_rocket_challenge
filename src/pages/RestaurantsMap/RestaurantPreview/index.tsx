@@ -51,12 +51,12 @@ const RestaurantPreview: React.FC<Props> = ({
   return (
     <Section>
       <TitleContainer>
-        <SectionTitleText>
+        <SectionTitleText color="black">
           {selectedRestaurant.name}
         </SectionTitleText>
 
         <Space mt={6}>
-          <SubTitleText>
+          <SubTitleText color="black">
             {selectedRestaurant.category}
           </SubTitleText>
         </Space>

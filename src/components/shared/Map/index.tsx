@@ -1,15 +1,16 @@
 // External Dependencies
 import React from 'react';
 import styled from '@emotion/styled';
+import { useTheme } from 'emotion-theming';
 import GoogleMapReact from 'google-map-react';
 
 // Internal Dependencies
 import { envKeys } from 'config/envKeys';
 import { Restaurant } from 'types/api';
+import { Theme } from 'utils/styled';
 
 // Local Dependencies
 import Pin from './Pin';
-import { dark } from './styles';
 
 // Local Typings
 interface WrapperProps {
@@ -36,6 +37,8 @@ const Map: React.FC<Props> = ({
   readOnly,
   restaurants,
 }) => {
+  const theme = useTheme<Theme>();
+
   if (restaurants.length === 0) {
     return null;
   }
@@ -49,7 +52,7 @@ const Map: React.FC<Props> = ({
         defaultCenter={firstRestaurant.location}
         defaultZoom={defaultZoom}
         options={{
-          styles: dark,
+          styles: theme.mapStyles,
         }}
       >
         {restaurants.map((restaurant) => {
