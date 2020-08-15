@@ -12,11 +12,11 @@ import PinIcon from './PinIcon';
 
 // Local Typings
 interface Props {
-  onClick?: (restaurant: Restaurant) => void;
+  onClickRestaurant?: (restaurant: Restaurant) => void;
   readOnly?: boolean;
+  restaurant: Restaurant;
   lat: number;
   lng: number;
-  text: string;
 }
 
 // Local Variables
@@ -33,7 +33,7 @@ const Wrapper = styled.div({
       display: 'flex',
       height: 60,
       justifyContent: 'center',
-      padding: 2,
+      padding: '6px 2px',
       position: 'fixed',
       textAlign: 'center',
       transform: 'translateX(-25%)',
@@ -51,11 +51,14 @@ const Wrapper = styled.div({
 
 // Component Definition
 const Pin: React.FC<Props> = ({
+  onClickRestaurant,
   readOnly,
-  text,
+  restaurant,
 }) => {
   const handleClick = () => {
-    console.log('I was clicked');
+    if (onClickRestaurant) {
+      onClickRestaurant(restaurant);
+    }
   };
 
   return readOnly
@@ -69,9 +72,10 @@ const Pin: React.FC<Props> = ({
 
         <BodyText
           as="span"
+          isResponsive={false}
           size="sm"
         >
-          {text}
+          {restaurant.name}
         </BodyText>
       </Wrapper>
     );

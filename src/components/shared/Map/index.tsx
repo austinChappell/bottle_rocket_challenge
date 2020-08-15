@@ -12,6 +12,7 @@ import Pin from './Pin';
 // Local Typings
 interface Props {
   mapHeight?: number | string;
+  onClickRestaurant?: (restaurant: Restaurant) => void;
   readOnly?: boolean;
   restaurants: Restaurant[]
 }
@@ -19,6 +20,7 @@ interface Props {
 // Component Definition
 const Map: React.FC<Props> = ({
   mapHeight = 500,
+  onClickRestaurant,
   readOnly,
   restaurants,
 }) => {
@@ -35,18 +37,20 @@ const Map: React.FC<Props> = ({
         defaultCenter={firstRestaurant.location}
         defaultZoom={14}
       >
-        {restaurants.map(({
-          location,
-          name,
-        }) => (
-          <Pin
-            key={name}
-            lat={location.lat}
-            lng={location.lng}
-            readOnly={readOnly}
-            text={name}
-          />
-        ))}
+        {restaurants.map((restaurant) => {
+          const { location } = restaurant;
+
+          return (
+            <Pin
+              key={restaurant.name}
+              lat={location.lat}
+              lng={location.lng}
+              onClickRestaurant={onClickRestaurant}
+              readOnly={readOnly}
+              restaurant={restaurant}
+            />
+          );
+        })}
       </GoogleMapReact>
     </div>
   );

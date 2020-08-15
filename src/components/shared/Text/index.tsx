@@ -17,6 +17,7 @@ export interface TextProps {
   as?: 'p' | 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   color?: FontColor;
   fontWeight?: 'normal' | 'bold';
+  isResponsive?: boolean;
   size?: keyof typeof FontSize;
 }
 
@@ -29,6 +30,7 @@ const fontColors: Record<FontColor, string> = {
 const StyledText = styled.p<TextProps>(({
   color: fontColor = 'black',
   fontWeight = 'normal',
+  isResponsive = true,
   size = 'md',
 }) => ({
   color: fontColors[fontColor],
@@ -37,11 +39,13 @@ const StyledText = styled.p<TextProps>(({
   fontWeight,
   lineHeight: '1.0em',
 
-  [`${mediaQueries.isTabletMin}`]: {
-    fontSize: FontSize[size] * 1.3,
-  },
-  [`${mediaQueries.isDesktopMin}`]: {
-    fontSize: FontSize[size] * 1.6,
+  ...isResponsive && {
+    [`${mediaQueries.isTabletMin}`]: {
+      fontSize: FontSize[size] * 1.3,
+    },
+    [`${mediaQueries.isDesktopMin}`]: {
+      fontSize: FontSize[size] * 1.6,
+    },
   },
 }));
 
