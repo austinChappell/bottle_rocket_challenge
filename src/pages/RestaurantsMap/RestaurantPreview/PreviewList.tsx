@@ -17,14 +17,12 @@ const PreviewList: React.FC<Props> = ({
   },
 }) => (
   <div>
-    <Space my={6}>
-      <BodyText
-        color="white"
-        size="sm"
-      >
-        {location.address}
-      </BodyText>
-    </Space>
+    <BodyText
+      color="white"
+      size="sm"
+    >
+      {location.address}
+    </BodyText>
 
     <Space my={6}>
       <BodyText

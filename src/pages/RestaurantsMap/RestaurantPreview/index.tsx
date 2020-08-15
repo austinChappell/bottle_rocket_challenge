@@ -2,6 +2,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
+import Space from 'components/shared/Space';
+import SectionTitleText from 'components/shared/Text/SectionTitleText';
+import SubTitleText from 'components/shared/Text/SubTitleText';
 import { mediaQueries } from 'constants/breakpoints';
 import { Restaurant } from 'types/api';
 
@@ -14,10 +17,18 @@ interface Props {
 }
 
 // Local Variables
+const padding = 16;
+const TitleContainer = styled.div({
+  flexBasis: '100%',
+  paddingLeft: padding,
+});
+const Section = styled.section({
+  padding: '48px 24px',
+});
 const Wrapper = styled.div({
   '& > div': {
     flexBasis: '50%',
-    padding: 16,
+    padding,
 
     [`${mediaQueries.isMobileMax}`]: {
       flexBasis: '100%',
@@ -36,11 +47,25 @@ const RestaurantPreview: React.FC<Props> = ({
   console.log('RestaurantPreview');
 
   return (
-    <Wrapper>
-      <PreviewSelection selectedRestaurant={selectedRestaurant} />
+    <Section>
+      <TitleContainer>
+        <SectionTitleText>
+          {selectedRestaurant.name}
+        </SectionTitleText>
 
-      <PreviewList selectedRestaurant={selectedRestaurant} />
-    </Wrapper>
+        <Space mt={6}>
+          <SubTitleText>
+            {selectedRestaurant.category}
+          </SubTitleText>
+        </Space>
+      </TitleContainer>
+
+      <Wrapper>
+        <PreviewSelection selectedRestaurant={selectedRestaurant} />
+
+        <PreviewList selectedRestaurant={selectedRestaurant} />
+      </Wrapper>
+    </Section>
   );
 };
 

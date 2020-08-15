@@ -23,16 +23,6 @@ const PreviewSelection: React.FC<Props> = ({
   selectedRestaurant,
 }) => (
   <div>
-    <SectionTitleText>
-      {selectedRestaurant.name}
-    </SectionTitleText>
-
-    <Space my={6}>
-      <SubTitleText>
-        {selectedRestaurant.category}
-      </SubTitleText>
-    </Space>
-
     <StyledImg
       alt={selectedRestaurant.name}
       src={selectedRestaurant.backgroundImageURL}
