@@ -51,6 +51,7 @@ const Map: React.FC<Props> = ({
         bootstrapURLKeys={{ key: envKeys.REACT_APP_GOOGLE_MAPS_API_KEY }}
         defaultCenter={firstRestaurant.location}
         defaultZoom={defaultZoom}
+        key={firstRestaurant.name}
         options={{
           backgroundColor: theme.backgroundColor,
           styles: theme.mapStyles,
