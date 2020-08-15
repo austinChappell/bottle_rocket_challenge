@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 
 // Internal Dependencies
 import PageTitleText from 'components/shared/Text/PageTitleText';
+import { mediaQueries } from 'constants/breakpoints';
 import colors from 'constants/colors';
 import { useSelectLeftNavItem, useSelectRightNavItem } from 'state/selectors/ui';
 import { useAppDispatch } from 'state/store';
@@ -14,10 +15,17 @@ const Wrapper = styled.div({
   alignItems: 'center',
   backgroundColor: colors.primaryLight,
   display: 'flex',
-  padding: '32px 12px 12px',
+  padding: '32px 12px 8px',
   position: 'sticky',
   top: 0,
   zIndex: 1,
+
+  [`${mediaQueries.isTabletMin}`]: {
+    padding: '32px 24px 12px',
+  },
+  [`${mediaQueries.isDesktopMin}`]: {
+    padding: '32px 32px 12px',
+  },
 });
 const Box = styled.div({
   '&:first-of-type': {
