@@ -12,3 +12,6 @@ export const useSelectLeftNavItem = () =>
 
 export const useSelectRightNavItem = () =>
   useSelector((state: AppState) => state.ui.rightNavItem);
+
+export const useSelectThemeVariant = () =>
+  useSelector((state: AppState) => state.ui.theme);

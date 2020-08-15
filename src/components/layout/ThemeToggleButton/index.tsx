@@ -3,6 +3,7 @@ import React from 'react';
 
 // Internal Dependencies
 import IconButton from 'components/shared/IconButton';
+import { useAppDispatch } from 'state/store';
 import styled from 'utils/styled';
 
 // Local Dependencies
@@ -17,11 +18,18 @@ const Wrapper = styled.div({
 
 // Component Definition
 const ThemeToggleButton: React.FC = () => {
-  console.log('ThemeToggle');
+  const dispatch = useAppDispatch();
+
+  const handleClick = () => {
+    dispatch({ type: 'UI_TOGGLE_THEME' });
+  };
 
   return (
     <Wrapper>
-      <IconButton isResponsive={false}>
+      <IconButton
+        isResponsive={false}
+        onClick={handleClick}
+      >
         <SunMoonIcon color="white" />
       </IconButton>
     </Wrapper>
