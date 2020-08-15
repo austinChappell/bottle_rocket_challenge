@@ -18,6 +18,7 @@ export interface Theme {
   palette: {
     navBarBackground: Color;
     navBarText: Color;
+    previewTitle: Color;
   };
 }
 
@@ -112,6 +113,7 @@ export const themes: Record<ThemeVariant, Theme> = {
     palette: {
       navBarBackground: 'black',
       navBarText: 'primaryLight',
+      previewTitle: 'black',
     },
   },
   light: {
@@ -130,6 +132,7 @@ export const themes: Record<ThemeVariant, Theme> = {
     palette: {
       navBarBackground: 'primaryLight',
       navBarText: 'white',
+      previewTitle: 'primaryDark',
     },
   },
 };

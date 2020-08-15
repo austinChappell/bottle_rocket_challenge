@@ -28,9 +28,7 @@ const RestaurantsMap: React.FC = () => {
         restaurants={restaurants}
       />
 
-      {selectedRestaurant && (
-        <RestaurantPreview selectedRestaurant={selectedRestaurant} />
-      )}
+      <RestaurantPreview selectedRestaurant={selectedRestaurant} />
     </Page>
   );
 };

@@ -18,6 +18,8 @@ const Body = styled.div({
 });
 const Main = styled.main(({ theme }) => ({
   backgroundColor: theme.backgroundColor,
+  display: 'flex',
+  flexDirection: 'column',
   flexGrow: 1,
 }));
 

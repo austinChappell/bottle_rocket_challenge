@@ -13,6 +13,7 @@ enum FontSize {
   sm = 12,
 }
 export interface TextProps {
+  align?: 'left' | 'center' | 'right';
   as?: 'p' | 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   color?: Color;
   fontWeight?: 'normal' | 'bold';
@@ -23,6 +24,7 @@ export interface TextProps {
 
 // Local Variables
 const StyledText = styled.p<TextProps>(({
+  align = 'left',
   color: fontColor = 'black',
   fontWeight = 'normal',
   ignoreTheme,
@@ -35,6 +37,7 @@ const StyledText = styled.p<TextProps>(({
   fontSize: FontSize[size],
   fontWeight,
   lineHeight: '1.0em',
+  textAlign: align,
 
   ...isResponsive && {
     [`${mediaQueries.isTabletMin}`]: {

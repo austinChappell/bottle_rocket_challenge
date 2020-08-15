@@ -39,39 +39,37 @@ const Map: React.FC<Props> = ({
 }) => {
   const theme = useTheme<Theme>();
 
-  if (restaurants.length === 0) {
-    return null;
-  }
-
   const [firstRestaurant] = restaurants;
 
   return (
     <Wrapper mapHeight={mapHeight}>
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: envKeys.REACT_APP_GOOGLE_MAPS_API_KEY }}
-        defaultCenter={firstRestaurant.location}
-        defaultZoom={defaultZoom}
-        key={firstRestaurant.name}
-        options={{
-          backgroundColor: theme.backgroundColor,
-          styles: theme.mapStyles,
-        }}
-      >
-        {restaurants.map((restaurant) => {
-          const { location } = restaurant;
+      {firstRestaurant && (
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: envKeys.REACT_APP_GOOGLE_MAPS_API_KEY }}
+          defaultCenter={firstRestaurant.location}
+          defaultZoom={defaultZoom}
+          key={firstRestaurant.name}
+          options={{
+            backgroundColor: theme.backgroundColor,
+            styles: theme.mapStyles,
+          }}
+        >
+          {restaurants.map((restaurant) => {
+            const { location } = restaurant;
 
-          return (
-            <Pin
-              key={restaurant.name}
-              lat={location.lat}
-              lng={location.lng}
-              onClickRestaurant={onClickRestaurant}
-              readOnly={readOnly}
-              restaurant={restaurant}
-            />
-          );
-        })}
-      </GoogleMapReact>
+            return (
+              <Pin
+                key={restaurant.name}
+                lat={location.lat}
+                lng={location.lng}
+                onClickRestaurant={onClickRestaurant}
+                readOnly={readOnly}
+                restaurant={restaurant}
+              />
+            );
+          })}
+        </GoogleMapReact>
+      )}
     </Wrapper>
   );
 };
