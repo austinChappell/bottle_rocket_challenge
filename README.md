@@ -8,6 +8,10 @@ You can also view the [demo application](https://bottle-rocket-challenge.netlify
 
 Add a `.env` file to the root directoy, mirroring `example.env`.
 
+## Notes
+
+The package `google-map-react` is throwing some error-level warnings in the browser for the development build. Everything is rendering correctly though. With more time, I would rework the map setup do either be built without a package, or explore alternative packages.
+
 ## Available Scripts
 
 In the project directory, you can run:
