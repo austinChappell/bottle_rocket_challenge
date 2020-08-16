@@ -5,13 +5,24 @@ import {
 import { getRestaurants } from 'api/restaurants';
 import { RestaurantsAction } from 'state/reducers/restaurants';
 import { ThenArg } from 'types';
+import { Restaurant } from 'types/api';
+
+const normalizeRestaurants = (restaurants: Restaurant[]): Restaurant[] => {
+  const secureImageUrl = (url: string) =>
+    url.replace('http://', 'https://')
+
+  return restaurants.map(restaurant => ({
+    ...restaurant,
+    backgroundImageURL: secureImageUrl(restaurant.backgroundImageURL)
+  }))
+}
 
 function* fetchRestaurants() {
   try {
     const restaurantData: ThenArg<ReturnType<typeof getRestaurants>> = yield call(getRestaurants);
 
     yield put<RestaurantsAction>({
-      payload: { data: restaurantData.restaurants },
+      payload: { data: normalizeRestaurants(restaurantData.restaurants) },
       type: 'RESTAURANTS_GET_SUCCESS',
     });
   } catch (error) {
