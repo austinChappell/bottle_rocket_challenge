@@ -4,6 +4,7 @@ import React from 'react';
 // Internal Dependencies
 import Icon from 'components/shared/Icon';
 import IconButton from 'components/shared/IconButton';
+import Space from 'components/shared/Space';
 
 // Local Typings
 interface Props {
@@ -14,12 +15,17 @@ interface Props {
 const GeoLocationButton: React.FC<Props> = ({
   onClick,
 }) => (
-  <IconButton onClick={onClick}>
-    <Icon
-      color="primaryDark"
-      name="gps"
-    />
-  </IconButton>
+  <Space
+    clone
+    ml={16}
+  >
+    <IconButton onClick={onClick}>
+      <Icon
+        color="primaryDark"
+        name="gps"
+      />
+    </IconButton>
+  </Space>
 );
 
 export default GeoLocationButton;

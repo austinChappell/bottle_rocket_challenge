@@ -41,11 +41,13 @@ const Select: React.FC<Props> = ({
   onChange,
   options,
   value,
+  ...props
 }) => (
   <StyledSelect
     aria-label={ariaLabel ?? label}
     onChange={onChange}
     value={value}
+    {...props}
   >
     <option value="">
       {label}

@@ -32,17 +32,15 @@ const Input: React.FC<Props> = ({
   label,
   onChange,
   value,
-}) => {
-  console.log('Input');
-
-  return (
-    <StyledInput
-      aria-label={ariaLabel ?? label}
-      onChange={onChange}
-      placeholder={label}
-      value={value}
-    />
-  );
-};
+  ...props
+}) => (
+  <StyledInput
+    aria-label={ariaLabel ?? label}
+    onChange={onChange}
+    placeholder={label}
+    value={value}
+    {...props}
+  />
+);
 
 export default Input;

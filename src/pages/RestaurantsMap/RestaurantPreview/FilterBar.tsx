@@ -6,6 +6,8 @@ import Input from 'components/shared/Input';
 // Internal Dependencies
 import { MapProps } from 'components/shared/Map';
 import Select from 'components/shared/Select';
+import Space from 'components/shared/Space';
+import { mediaQueries } from 'constants/breakpoints';
 import colors from 'constants/colors';
 import { useDidMount } from 'hooks/useDidMount';
 import { useSelectField } from 'hooks/useSelectField';
@@ -31,11 +33,27 @@ const SectionNavContainer = styled.div({
   paddingBottom: 24,
 });
 const FilterContainer = styled.div({
-  '& > *:not(:first-child)': {
-    marginLeft: 8,
+  display: 'flex',
+  flexDirection: 'column',
+  flexGrow: 1,
+
+  [`${mediaQueries.isMobileMax}`]: {
+    '& > *': {
+      width: '100%',
+    },
+
+    '& > *:not(:first-child)': {
+      marginTop: 8,
+    },
   },
 
-  display: 'flex',
+  [`${mediaQueries.isTabletMin}`]: {
+    '& > *:not(:first-child)': {
+      marginLeft: 8,
+    },
+
+    flexDirection: 'row',
+  },
 });
 
 // Component Definition
