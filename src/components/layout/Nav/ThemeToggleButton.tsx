@@ -2,12 +2,10 @@
 import React from 'react';
 
 // Internal Dependencies
+import Icon from 'components/shared/Icon';
 import IconButton from 'components/shared/IconButton';
 import { useAppDispatch } from 'state/store';
 import styled from 'utils/styled';
-
-// Local Dependencies
-import SunMoonIcon from './SunMoonIcon';
 
 // Local Variables
 const Wrapper = styled.div({
@@ -27,7 +25,11 @@ const ThemeToggleButton: React.FC = () => {
   return (
     <Wrapper>
       <IconButton onClick={handleClick}>
-        <SunMoonIcon color="white" />
+        <Icon
+          color="white"
+          name="sunMoon"
+          size="sm"
+        />
       </IconButton>
     </Wrapper>
   );

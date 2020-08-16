@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { useTheme } from 'emotion-theming';
-import GoogleMapReact from 'google-map-react';
+import GoogleMapReact, { Props as GoogleMapReactProps } from 'google-map-react';
 
 // Internal Dependencies
 import { envKeys } from 'config/envKeys';
@@ -16,7 +16,8 @@ import Pin from './Pin';
 interface WrapperProps {
   mapHeight?: number | string;
 }
-interface Props extends WrapperProps {
+export interface MapProps extends WrapperProps {
+  center?: GoogleMapReactProps['center'];
   defaultZoom?: number;
   onClickRestaurant?: (restaurant: Restaurant) => void;
   readOnly?: boolean;
@@ -30,7 +31,8 @@ const Wrapper = styled.div<WrapperProps>(({ mapHeight }) => ({
 }));
 
 // Component Definition
-const Map: React.FC<Props> = ({
+const Map: React.FC<MapProps> = ({
+  center,
   defaultZoom = 14,
   mapHeight = 500,
   onClickRestaurant,
@@ -41,11 +43,14 @@ const Map: React.FC<Props> = ({
 
   const [firstRestaurant] = restaurants;
 
+  console.log('the user center : ', center);
+
   return (
     <Wrapper mapHeight={mapHeight}>
       {firstRestaurant && (
         <GoogleMapReact
           bootstrapURLKeys={{ key: envKeys.REACT_APP_GOOGLE_MAPS_API_KEY }}
+          center={center}
           defaultCenter={firstRestaurant.location}
           defaultZoom={defaultZoom}
           key={firstRestaurant.name}

@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import closeImage from 'assets/images/ic_close@2x.png';
 import NavLink from 'components/layout/Nav/NavLink';
 import Page from 'components/layout/Page';
-import Map from 'components/shared/Map';
+import Map, { MapProps } from 'components/shared/Map';
 import { useSelectRestaurants } from 'state/selectors/restaurants';
 import { Restaurant } from 'types/api';
 
@@ -14,9 +14,12 @@ import RestaurantPreview from './RestaurantPreview';
 
 // Component Definition
 const RestaurantsMap: React.FC = () => {
+  const [mapCenter, setMapCenter] = useState<MapProps['center']>(undefined);
   const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant | null>(null);
 
   const restaurants = useSelectRestaurants();
+
+  console.log('map center : ', mapCenter);
 
   return (
     <Page
@@ -31,11 +34,15 @@ const RestaurantsMap: React.FC = () => {
       title="Map"
     >
       <Map
+        center={mapCenter}
         onClickRestaurant={setSelectedRestaurant}
         restaurants={restaurants}
       />
 
-      <RestaurantPreview selectedRestaurant={selectedRestaurant} />
+      <RestaurantPreview
+        onCenterMapOnUser={setMapCenter}
+        selectedRestaurant={selectedRestaurant}
+      />
     </Page>
   );
 };

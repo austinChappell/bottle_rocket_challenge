@@ -2,9 +2,9 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
+import ThemeToggleButton from 'components/layout/Nav/ThemeToggleButton';
 // Internal Dependencies
 import PageTitleText from 'components/shared/Text/PageTitleText';
-import ThemeToggleButton from 'components/shared/ThemeToggleButton';
 import { mediaQueries } from 'constants/breakpoints';
 import colors from 'constants/colors';
 import { useSelectLeftNavItem, useSelectRightNavItem } from 'state/selectors/ui';
