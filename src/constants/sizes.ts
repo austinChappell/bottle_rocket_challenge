@@ -5,13 +5,13 @@ import { mediaQueries } from './breakpoints';
 
 // Local Dependencies
 export const navButtonHeightStylesWithMediaQueries: CSSProperties = {
-  height: 28,
+  height: 20,
 
   [`${mediaQueries.isTabletMin}`]: {
-    height: 32,
+    height: 24,
   },
 
   [`${mediaQueries.isDesktopMin}`]: {
-    height: 40,
+    height: 28,
   },
 };

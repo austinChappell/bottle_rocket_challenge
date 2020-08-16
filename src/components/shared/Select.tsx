@@ -1,7 +1,7 @@
 // External Dependencies
 import React from 'react';
 
-import colors from 'constants/colors';
+// Internal Dependencies
 import styled from 'utils/styled';
 
 // Local Typings
@@ -19,14 +19,18 @@ export interface SelectOption {
 
 // Local Variables
 const StyledSelect = styled.select(({ theme }) => ({
+  '&:focus': {
+    outline: theme.styles.outline,
+  },
+
   appearance: 'none',
-  backgroundColor: theme.palette.selectBackground,
-  border: `1px solid ${theme.colors.primaryDark}`,
+  backgroundColor: theme.styles.selectBackground,
+  border: theme.styles.inputBorder,
   borderRadius: 4,
   color: theme.colors.primaryDark,
   cursor: 'pointer',
   display: 'block',
-  marginLeft: 8,
+  fontSize: 16,
   padding: 4,
 }));
 

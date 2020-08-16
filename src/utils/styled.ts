@@ -15,9 +15,11 @@ export interface Theme {
     white: string;
   };
   mapStyles: MapTypeStyle[];
-  palette: {
+  styles: {
+    inputBorder: string;
     navBarBackground: Color;
     navBarText: Color;
+    outline: string,
     previewTitle: Color;
     selectBackground: string;
   };
@@ -111,9 +113,11 @@ export const themes: Record<ThemeVariant, Theme> = {
         stylers: [{ color: '#17263c' }],
       },
     ],
-    palette: {
+    styles: {
+      inputBorder: 'none',
       navBarBackground: 'black',
       navBarText: 'primaryLight',
+      outline: `2px solid ${colors.primaryDark}`,
       previewTitle: 'black',
       selectBackground: colors.white,
     },
@@ -131,9 +135,11 @@ export const themes: Record<ThemeVariant, Theme> = {
         stylers: [{ visibility: 'on' }],
       },
     ],
-    palette: {
+    styles: {
+      inputBorder: `2px solid ${colors.primaryLight}`,
       navBarBackground: 'primaryLight',
       navBarText: 'white',
+      outline: `2px solid ${colors.primaryLight}`,
       previewTitle: 'primaryDark',
       selectBackground: grays.light,
     },

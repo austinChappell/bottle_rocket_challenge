@@ -63,7 +63,7 @@ const RestaurantPreview: React.FC<Props> = ({
       {selectedRestaurant ? (
         <>
           <TitleContainer>
-            <SectionTitleText color={theme.palette.previewTitle}>
+            <SectionTitleText color={theme.styles.previewTitle}>
               {selectedRestaurant.name}
             </SectionTitleText>
 

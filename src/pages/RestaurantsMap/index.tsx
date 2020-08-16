@@ -1,5 +1,5 @@
 // External Dependencies
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Internal Dependencies
 import closeImage from 'assets/images/ic_close@2x.png';
@@ -18,6 +18,16 @@ const RestaurantsMap: React.FC = () => {
   const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant | null>(null);
 
   const restaurants = useGetFilteredRestaurants();
+
+  useEffect(() => {
+    const restaurantNames = restaurants.map(({ name }) => name);
+
+    // clear the selected restaurant if
+    // it is not included in new filtered results
+    if (selectedRestaurant && !restaurantNames.includes(selectedRestaurant.name)) {
+      setSelectedRestaurant(null);
+    }
+  }, [restaurants]);
 
   return (
     <Page

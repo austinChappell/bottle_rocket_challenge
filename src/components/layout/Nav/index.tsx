@@ -19,7 +19,7 @@ const StyledNav = styled.nav({
 });
 const Container = styled.div(({ theme }) => ({
   alignItems: 'center',
-  backgroundColor: colors[theme.palette.navBarBackground],
+  backgroundColor: colors[theme.styles.navBarBackground],
   display: 'flex',
   padding: '32px 12px 8px',
 
@@ -84,7 +84,7 @@ const Nav: React.FC = () => {
 
         <Box>
           <Link to="/">
-            <PageTitleText color={theme.palette.navBarText}>
+            <PageTitleText color={theme.styles.navBarText}>
               Lunch Tyme
             </PageTitleText>
           </Link>

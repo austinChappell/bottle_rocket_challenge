@@ -2,11 +2,14 @@
 import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 
+import Input from 'components/shared/Input';
 // Internal Dependencies
 import { MapProps } from 'components/shared/Map';
 import Select from 'components/shared/Select';
+import colors from 'constants/colors';
 import { useDidMount } from 'hooks/useDidMount';
 import { useSelectField } from 'hooks/useSelectField';
+import { useTextField } from 'hooks/useTextField';
 import { useSelectGeoLocation } from 'state/selectors/general';
 import { useSelectCategoryFilterOptions } from 'state/selectors/restaurants';
 import { useAppDispatch } from 'state/store';
@@ -21,9 +24,18 @@ interface Props {
 
 // Local Variables
 const SectionNavContainer = styled.div({
+  borderBottom: `1px solid ${colors.primaryDark}`,
   display: 'flex',
   justifyContent: 'space-between',
-  marginBottom: 24,
+  marginBottom: 48,
+  paddingBottom: 24,
+});
+const FilterContainer = styled.div({
+  '& > *:not(:first-child)': {
+    marginLeft: 8,
+  },
+
+  display: 'flex',
 });
 
 // Component Definition
@@ -38,8 +50,7 @@ const FilterBar: React.FC<Props> = ({
   const options = useSelectCategoryFilterOptions();
 
   const categoryField = useSelectField();
-
-  console.log('category : ', categoryField.value);
+  const searchField = useTextField();
 
   const handleClick = () => {
     if (geoLocation) {
@@ -56,23 +67,29 @@ const FilterBar: React.FC<Props> = ({
         payload: {
           filter: {
             category: categoryField.value,
+            search: searchField.value,
           },
         },
         type: 'RESTAURANTS_SET_FILTERS',
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [categoryField.value]);
+  }, [categoryField.value, searchField.value]);
 
   return (
     <SectionNavContainer>
-      <div>
+      <FilterContainer>
         <Select
           label="Category"
           options={options}
           {...categoryField}
         />
-      </div>
+
+        <Input
+          label="Search"
+          {...searchField}
+        />
+      </FilterContainer>
       {geoLocation && (
         <GeoLocationButton onClick={handleClick} />
       )}
