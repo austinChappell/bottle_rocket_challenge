@@ -2,11 +2,10 @@
 import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 
-import Input from 'components/shared/Input';
 // Internal Dependencies
+import Input from 'components/shared/Input';
 import { MapProps } from 'components/shared/Map';
 import Select from 'components/shared/Select';
-import Space from 'components/shared/Space';
 import { mediaQueries } from 'constants/breakpoints';
 import colors from 'constants/colors';
 import { useDidMount } from 'hooks/useDidMount';

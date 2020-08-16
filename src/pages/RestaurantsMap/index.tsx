@@ -27,6 +27,7 @@ const RestaurantsMap: React.FC = () => {
     if (selectedRestaurant && !restaurantNames.includes(selectedRestaurant.name)) {
       setSelectedRestaurant(null);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restaurants]);
 
   return (
