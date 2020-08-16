@@ -11,13 +11,13 @@ import { Restaurant } from 'types/api';
 // We are changing them to https for increased security.
 const normalizeRestaurants = (restaurants: Restaurant[]): Restaurant[] => {
   const secureImageUrl = (url: string) =>
-    url.replace('http://', 'https://')
+    url.replace('http://', 'https://');
 
-  return restaurants.map(restaurant => ({
+  return restaurants.map((restaurant) => ({
     ...restaurant,
-    backgroundImageURL: secureImageUrl(restaurant.backgroundImageURL)
-  }))
-}
+    backgroundImageURL: secureImageUrl(restaurant.backgroundImageURL),
+  }));
+};
 
 function* fetchRestaurants() {
   try {
