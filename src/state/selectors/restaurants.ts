@@ -13,5 +13,5 @@ export const useSelectRestaurants = () =>
 export const useSelectCategoryFilterOptions = (): SelectOption[] =>
   useSelector((state: AppState) => state.restaurants.categoryFilters.map((filter) => ({
     id: filter.label,
-    label: filter.label,
+    label: `${filter.label} (${filter.count})`,
   })));

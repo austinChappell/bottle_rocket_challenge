@@ -46,7 +46,10 @@ const Select: React.FC<Props> = ({
       {label}
     </option>
     {options.map((opt) => (
-      <option key={opt.label}>
+      <option
+        key={opt.label}
+        value={opt.id}
+      >
         {opt.label}
       </option>
     ))}
