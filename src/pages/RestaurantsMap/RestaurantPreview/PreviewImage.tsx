@@ -20,7 +20,7 @@ const StyledImg = styled.img({
 const PreviewImage: React.FC<Props> = ({
   selectedRestaurant,
 }) => (
-  <div>
+  <div> {/* This div helps with layout in Safari */}
     <StyledImg
       alt={selectedRestaurant.name}
       src={selectedRestaurant.backgroundImageURL}
