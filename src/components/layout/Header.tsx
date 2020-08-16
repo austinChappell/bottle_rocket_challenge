@@ -4,13 +4,12 @@ import { Link } from 'react-router-dom';
 
 // Internal Dependencies
 import PageTitleText from 'components/shared/Text/PageTitleText';
+import ThemeToggleButton from 'components/shared/ThemeToggleButton';
 import { mediaQueries } from 'constants/breakpoints';
 import colors from 'constants/colors';
 import { useSelectLeftNavItem, useSelectRightNavItem } from 'state/selectors/ui';
 import { useAppDispatch } from 'state/store';
 import styled, { useAppTheme } from 'utils/styled';
-
-import ThemeToggleButton from './ThemeToggleButton';
 
 // Local Variables
 const Nav = styled.nav({

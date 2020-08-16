@@ -26,10 +26,7 @@ const ThemeToggleButton: React.FC = () => {
 
   return (
     <Wrapper>
-      <IconButton
-        isResponsive={false}
-        onClick={handleClick}
-      >
+      <IconButton onClick={handleClick}>
         <SunMoonIcon color="white" />
       </IconButton>
     </Wrapper>

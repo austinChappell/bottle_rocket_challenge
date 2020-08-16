@@ -2,11 +2,13 @@
 import React, { useState } from 'react';
 
 // Internal Dependencies
+import backImage from 'assets/images/ic_webBack@2x.png';
+import mapImage from 'assets/images/icon_map@2x.png';
 import Drawer from 'components/layout/Drawer';
 import Grid, { GridItem } from 'components/layout/Grid';
 import Page from 'components/layout/Page';
-import BackButton from 'components/shared/NavElements/BackButton';
-import MapLink from 'components/shared/NavElements/MapLink';
+import NavLink from 'components/shared/NavLink';
+import NavLinkButton from 'components/shared/NavLink/NavButton';
 import { useSelectRestaurants } from 'state/selectors/restaurants';
 import { Restaurant } from 'types/api';
 
@@ -35,9 +37,21 @@ const RestaurantsList: React.FC = () => {
   return (
     <Page
       leftNavItem={isOpen
-        ? <BackButton onClick={handleClose} />
+        ? (
+          <NavLinkButton
+            alt="go back"
+            onClick={handleClose}
+            src={backImage}
+          />
+        )
         : null}
-      rightNavItem={<MapLink />}
+      rightNavItem={(
+        <NavLink
+          alt="go to map"
+          src={mapImage}
+          to="/map"
+        />
+      )}
       title="Restaurants"
     >
       <Grid as="ul">

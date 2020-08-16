@@ -1,10 +1,17 @@
 // External Dependencies
 import { CSSProperties } from 'react';
 
-// Local Dependencies
-export const navButtonHeight = 32;
+import { mediaQueries } from './breakpoints';
 
+// Local Dependencies
 export const navButtonHeightStylesWithMediaQueries: CSSProperties = {
-  height: navButtonHeight,
-  width: navButtonHeight,
+  height: 28,
+
+  [`${mediaQueries.isTabletMin}`]: {
+    height: 32,
+  },
+
+  [`${mediaQueries.isDesktopMin}`]: {
+    height: 40,
+  },
 };
