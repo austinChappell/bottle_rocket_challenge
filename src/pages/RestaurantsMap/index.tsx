@@ -43,6 +43,7 @@ const RestaurantsMap: React.FC = () => {
     >
       <Map
         center={mapCenter}
+        includeCurrentLocation
         onClickRestaurant={setSelectedRestaurant}
         restaurants={restaurants}
       />

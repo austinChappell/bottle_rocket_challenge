@@ -6,10 +6,12 @@ import GoogleMapReact, { Props as GoogleMapReactProps } from 'google-map-react';
 
 // Internal Dependencies
 import { envKeys } from 'config/envKeys';
+import { useSelectGeoLocation } from 'state/selectors/general';
 import { Restaurant } from 'types/api';
 import { Theme } from 'utils/styled';
 
 // Local Dependencies
+import CurrentLocationIcon from './CurrentLocationIcon';
 import Pin from './Pin';
 
 // Local Typings
@@ -19,6 +21,7 @@ interface WrapperProps {
 export interface MapProps extends WrapperProps {
   center?: GoogleMapReactProps['center'];
   defaultZoom?: number;
+  includeCurrentLocation?: boolean;
   onClickRestaurant?: (restaurant: Restaurant) => void;
   readOnly?: boolean;
   restaurants: Restaurant[];
@@ -34,6 +37,7 @@ const Wrapper = styled.div<WrapperProps>(({ mapHeight }) => ({
 const Map: React.FC<MapProps> = ({
   center,
   defaultZoom = 14,
+  includeCurrentLocation = false,
   mapHeight = 500,
   onClickRestaurant,
   readOnly,
@@ -44,6 +48,8 @@ const Map: React.FC<MapProps> = ({
   const theme = useTheme<Theme>();
 
   const [firstRestaurant] = restaurants;
+
+  const geoLocation = useSelectGeoLocation();
 
   useEffect(() => {
     if (firstRestaurant && !defaultCenter) {
@@ -78,6 +84,13 @@ const Map: React.FC<MapProps> = ({
               />
             );
           })}
+
+          {includeCurrentLocation && geoLocation && (
+            <CurrentLocationIcon
+              lat={geoLocation.coords.latitude}
+              lng={geoLocation.coords.longitude}
+            />
+          )}
         </GoogleMapReact>
       )}
     </Wrapper>
