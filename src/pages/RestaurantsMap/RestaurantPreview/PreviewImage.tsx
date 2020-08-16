@@ -20,10 +20,12 @@ const StyledImg = styled.img({
 const PreviewImage: React.FC<Props> = ({
   selectedRestaurant,
 }) => (
-  <StyledImg
-    alt={selectedRestaurant.name}
-    src={selectedRestaurant.backgroundImageURL}
-  />
+  <div>
+    <StyledImg
+      alt={selectedRestaurant.name}
+      src={selectedRestaurant.backgroundImageURL}
+    />
+  </div>
 );
 
 export default PreviewImage;

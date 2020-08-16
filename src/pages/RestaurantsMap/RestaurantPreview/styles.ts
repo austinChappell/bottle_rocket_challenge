@@ -15,7 +15,7 @@ export const Section = styled.section({
   padding: '24px 24px',
 });
 export const Wrapper = styled.div({
-  '& > *': {
+  '& > div': {
     flexBasis: '50%',
     padding,
 
