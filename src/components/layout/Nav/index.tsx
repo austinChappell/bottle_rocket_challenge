@@ -2,11 +2,12 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-import ThemeToggleButton from 'components/layout/Nav/ThemeToggleButton';
 // Internal Dependencies
+import ThemeToggleButton from 'components/layout/Nav/ThemeToggleButton';
 import PageTitleText from 'components/shared/Text/PageTitleText';
 import { mediaQueries } from 'constants/breakpoints';
 import colors from 'constants/colors';
+import { useResizableWindow } from 'hooks/useResizableWindow';
 import { useSelectLeftNavItem, useSelectRightNavItem } from 'state/selectors/ui';
 import { useAppDispatch } from 'state/store';
 import styled, { useAppTheme } from 'utils/styled';
@@ -63,6 +64,8 @@ const Nav: React.FC = () => {
   const navRef = useRef<HTMLElement>(null);
 
   const navRefHeight = navRef.current?.clientHeight ?? 0;
+
+  useResizableWindow(); // this allows the nav height to update in redux
 
   useEffect(() => {
     dispatch({
