@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 // Internal Dependencies
 import backImage from 'assets/images/ic_webBack@2x.png';
 import mapImage from 'assets/images/icon_map@2x.png';
-import Drawer from 'components/layout/Drawer';
 import Grid, { GridItem } from 'components/layout/Grid';
+import NavLink from 'components/layout/Nav/NavLink';
+import NavLinkButton from 'components/layout/Nav/NavLink/NavButton';
 import Page from 'components/layout/Page';
-import NavLink from 'components/shared/NavLink';
-import NavLinkButton from 'components/shared/NavLink/NavButton';
+import Drawer from 'components/shared/Drawer';
 import { useSelectRestaurants } from 'state/selectors/restaurants';
 import { Restaurant } from 'types/api';
 

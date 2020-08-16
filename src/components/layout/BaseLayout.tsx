@@ -6,7 +6,7 @@ import colors from 'constants/colors';
 import styled from 'utils/styled';
 
 // Local Dependencies
-import Header from './Nav';
+import Nav from './Nav';
 
 // Local Variables
 const Body = styled.div({
@@ -28,7 +28,7 @@ const BaseLayout: React.FC = ({
   children,
 }) => (
   <Body>
-    <Header />
+    <Nav />
 
     <Main>
       {children}
