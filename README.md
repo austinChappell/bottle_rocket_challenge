@@ -1,4 +1,4 @@
-This project is a coding challenge for an application at Bottle Rocket.
+This project is a coding challenge for an application at Bottle Rocket. The API endpoint provided for the challenge was having issues with CORS, so I made my own endpoint.
 
 ## Demo
 
