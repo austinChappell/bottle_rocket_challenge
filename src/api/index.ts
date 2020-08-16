@@ -1,5 +1,7 @@
+// Local Typings
 type Method = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
+// Local Variables
 const request = async <T>(
   url: string,
   method: Method = 'GET',

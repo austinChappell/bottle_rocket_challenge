@@ -16,6 +16,7 @@ const Grid = styled.div<Props>({
   flexWrap: 'wrap',
 });
 
+// Component Definition
 export const GridItem = styled.div<Props>({
   flexBasis: '50%',
 

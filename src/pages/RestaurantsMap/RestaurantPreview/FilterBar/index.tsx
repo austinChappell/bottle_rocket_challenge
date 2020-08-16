@@ -1,13 +1,10 @@
 // External Dependencies
 import React, { useEffect } from 'react';
-import styled from '@emotion/styled';
 
 // Internal Dependencies
 import Input from 'components/shared/Input';
 import { MapProps } from 'components/shared/Map';
 import Select from 'components/shared/Select';
-import { mediaQueries } from 'constants/breakpoints';
-import colors from 'constants/colors';
 import { useDidMount } from 'hooks/useDidMount';
 import { useSelectField } from 'hooks/useSelectField';
 import { useTextField } from 'hooks/useTextField';
@@ -17,43 +14,12 @@ import { useAppDispatch } from 'state/store';
 
 // Local Dependencies
 import GeoLocationButton from './GeoLocationButton';
+import { FilterContainer, SectionNavContainer } from './styles';
 
 // Local Typings
 interface Props {
   onCenterMapOnUser: (center: MapProps['center']) => void;
 }
-
-// Local Variables
-const SectionNavContainer = styled.div({
-  borderBottom: `1px solid ${colors.primaryDark}`,
-  display: 'flex',
-  justifyContent: 'space-between',
-  marginBottom: 48,
-  paddingBottom: 24,
-});
-const FilterContainer = styled.div({
-  display: 'flex',
-  flexDirection: 'column',
-  flexGrow: 1,
-
-  [`${mediaQueries.isMobileMax}`]: {
-    '& > *': {
-      width: '100%',
-    },
-
-    '& > *:not(:first-child)': {
-      marginTop: 8,
-    },
-  },
-
-  [`${mediaQueries.isTabletMin}`]: {
-    '& > *:not(:first-child)': {
-      marginLeft: 8,
-    },
-
-    flexDirection: 'row',
-  },
-});
 
 // Component Definition
 const FilterBar: React.FC<Props> = ({

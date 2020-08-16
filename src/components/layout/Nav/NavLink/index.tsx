@@ -16,7 +16,7 @@ interface Props {
 const NavLink: React.FC<Props> = ({
   alt,
   src,
-  to
+  to,
 }) => (
   <Link to={to}>
     <NavLinkImage

@@ -74,10 +74,8 @@
           ["^(|api|assets|components|config|constants|hooks|pages|services|state|types|utils)(/.*|$)"],
           // Side effect imports.
           ["^\\u0000"],
-          // Parent imports. Put `..` last.
-          ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
-          // Other relative imports. Put same-folder imports and `.` last.
-          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+          // Relative imports. Put parent-folder imports and `..` last.
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$", "^\\.\\.(?!/?$)", "^\\.\\./?$"],
           // Style imports.
           ["^.+\\.s?css$"]
         ]

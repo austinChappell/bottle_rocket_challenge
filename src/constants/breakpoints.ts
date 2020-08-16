@@ -1,3 +1,4 @@
+// Local Variables
 const breakPoints = {
   maxMobile: 600,
   maxTablet: 900,

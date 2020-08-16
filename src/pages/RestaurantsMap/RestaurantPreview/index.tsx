@@ -1,6 +1,5 @@
 // External Dependencies
 import React from 'react';
-import styled from '@emotion/styled';
 
 // Internal Dependencies
 import { MapProps } from 'components/shared/Map';
@@ -9,7 +8,6 @@ import Space from 'components/shared/Space';
 import BodyText from 'components/shared/Text/BodyText';
 import SectionTitleText from 'components/shared/Text/SectionTitleText';
 import SubTitleText from 'components/shared/Text/SubTitleText';
-import { mediaQueries } from 'constants/breakpoints';
 import { Restaurant } from 'types/api';
 import { useAppTheme } from 'utils/styled';
 
@@ -17,38 +15,13 @@ import { useAppTheme } from 'utils/styled';
 import FilterBar from './FilterBar';
 import PreviewDetails from './PreviewDetails';
 import PreviewImage from './PreviewImage';
+import { Section, TitleContainer, Wrapper } from './styles';
 
 // Local Typings
 interface Props {
   onCenterMapOnUser: (center: MapProps['center']) => void;
   selectedRestaurant: Restaurant | null;
 }
-
-// Local Variables
-const padding = 16;
-const TitleContainer = styled.div({
-  flexBasis: '100%',
-  paddingLeft: padding,
-});
-const Section = styled.section({
-  flexGrow: 1,
-  minHeight: 200,
-  padding: '24px 24px',
-});
-const Wrapper = styled.div({
-  '& > div': {
-    flexBasis: '50%',
-    padding,
-
-    [`${mediaQueries.isMobileMax}`]: {
-      flexBasis: '100%',
-    },
-  },
-
-  display: 'flex',
-  flexWrap: 'wrap',
-  padding: '24px 0',
-});
 
 // Component Definition
 const RestaurantPreview: React.FC<Props> = ({

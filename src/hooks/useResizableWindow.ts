@@ -1,3 +1,4 @@
+// External Dependencies
 import { useCallback, useEffect, useState } from 'react';
 
 export const useResizableWindow = () => {

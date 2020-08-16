@@ -1,3 +1,4 @@
+// Local Variables
 const colors = {
   black: '#2a2a2a',
   primaryDark: '#34b379',

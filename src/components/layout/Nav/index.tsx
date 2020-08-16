@@ -5,52 +5,15 @@ import { Link } from 'react-router-dom';
 // Internal Dependencies
 import ThemeToggleButton from 'components/layout/Nav/ThemeToggleButton';
 import PageTitleText from 'components/shared/Text/PageTitleText';
-import { mediaQueries } from 'constants/breakpoints';
-import colors from 'constants/colors';
 import { useResizableWindow } from 'hooks/useResizableWindow';
 import { useSelectLeftNavItem, useSelectRightNavItem } from 'state/selectors/ui';
 import { useAppDispatch } from 'state/store';
-import styled, { useAppTheme } from 'utils/styled';
+import { useAppTheme } from 'utils/styled';
 
-// Local Variables
-const StyledNav = styled.nav({
-  position: 'sticky',
-  top: 0,
-  zIndex: 1,
-});
-const Container = styled.div(({ theme }) => ({
-  alignItems: 'center',
-  backgroundColor: colors[theme.styles.navBarBackground],
-  display: 'flex',
-  padding: '32px 12px 8px',
-
-  [`${mediaQueries.isTabletMin}`]: {
-    padding: '32px 24px 12px',
-  },
-  [`${mediaQueries.isDesktopMin}`]: {
-    padding: '32px 32px 12px',
-  },
-}));
-
-const TopItemContainer = styled.div({
-  left: 0,
-  position: 'fixed',
-  right: 0,
-  top: 0,
-});
-
-const Box = styled.div({
-  '&:first-of-type': {
-    justifyContent: 'flex-start',
-  },
-  '&:last-of-type': {
-    justifyContent: 'flex-end',
-  },
-
-  display: 'flex',
-  flex: 1,
-  justifyContent: 'center',
-});
+// Local Dependencies
+import {
+  Box, Container, StyledNav, TopItemContainer,
+} from './styles';
 
 // Component Definition
 const Nav: React.FC = () => {

@@ -1,5 +1,7 @@
+// External Dependencies
 import { useState } from 'react';
 
+// Local Typings
 type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
 
 export const useTextField = (initialValue = ''): {

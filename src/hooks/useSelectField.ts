@@ -1,5 +1,7 @@
+// External Dependencies
 import { useState } from 'react';
 
+// Local Typings
 type ChangeEvent = React.ChangeEvent<HTMLSelectElement>;
 
 export const useSelectField = (initialValue = ''): {

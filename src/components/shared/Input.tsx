@@ -2,6 +2,7 @@
 import React from 'react';
 
 // Internal Dependencies
+import { inputStyle } from 'constants/inputStyle';
 import styled from 'utils/styled';
 
 // Local Typings
@@ -24,10 +25,10 @@ const StyledInput = styled.input(({ theme }) => ({
 
   backgroundColor: theme.styles.selectBackground,
   border: theme.styles.inputBorder,
-  borderRadius: 4,
+  borderRadius: inputStyle.borderRadius,
   color: theme.colors.primaryDark,
-  fontSize: 16,
-  padding: 8,
+  fontSize: inputStyle.fontSize,
+  padding: inputStyle.padding,
 }));
 
 // Component Definition

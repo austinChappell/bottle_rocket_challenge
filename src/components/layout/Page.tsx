@@ -5,7 +5,7 @@ import { useAppDispatch } from 'state/store';
 
 // Local Typings
 interface Props {
-  children: any;
+  children: React.ReactElement | React.ReactElement[];
   leftNavItem: React.ReactElement | null;
   rightNavItem: React.ReactElement | null;
   title: string;
@@ -38,7 +38,7 @@ const Page: React.FC<Props> = ({
     document.title = title ? `Lunch Tyme | ${title}` : 'Lunch Tyme';
   }, [title]);
 
-  return children;
+  return children as React.ReactElement;
 };
 
 export default Page;

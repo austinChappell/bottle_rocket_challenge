@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// Internal Dependencies
 import mapImage from 'assets/images/icon_map@2x.png';
 import NavLink from 'components/layout/Nav/NavLink';
 import Page from 'components/layout/Page';
