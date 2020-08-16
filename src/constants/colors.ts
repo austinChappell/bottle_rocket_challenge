@@ -5,4 +5,10 @@ const colors = {
   white: '#ffffff',
 };
 
+export const grays = {
+  dark: '#555555',
+  light: '#eeeeee',
+  medium: '#cccccc',
+};
+
 export default colors;

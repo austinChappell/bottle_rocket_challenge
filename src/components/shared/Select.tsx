@@ -1,6 +1,7 @@
 // External Dependencies
 import React from 'react';
 
+import colors from 'constants/colors';
 import styled from 'utils/styled';
 
 // Local Typings
@@ -17,14 +18,17 @@ export interface SelectOption {
 }
 
 // Local Variables
-const StyledSelect = styled.select({
+const StyledSelect = styled.select(({ theme }) => ({
   appearance: 'none',
-  border: 'none',
+  backgroundColor: theme.palette.selectBackground,
+  border: `1px solid ${theme.colors.primaryDark}`,
   borderRadius: 4,
+  color: theme.colors.primaryDark,
+  cursor: 'pointer',
   display: 'block',
   marginLeft: 8,
   padding: 4,
-});
+}));
 
 // Component Definition
 const Select: React.FC<Props> = ({

@@ -2,7 +2,7 @@ import styled, { CreateStyled } from '@emotion/styled';
 import { useTheme } from 'emotion-theming';
 import { MapTypeStyle } from 'google-map-react';
 
-import colors from 'constants/colors';
+import colors, { grays } from 'constants/colors';
 
 export type Color = keyof typeof colors;
 
@@ -19,6 +19,7 @@ export interface Theme {
     navBarBackground: Color;
     navBarText: Color;
     previewTitle: Color;
+    selectBackground: string;
   };
 }
 
@@ -114,6 +115,7 @@ export const themes: Record<ThemeVariant, Theme> = {
       navBarBackground: 'black',
       navBarText: 'primaryLight',
       previewTitle: 'black',
+      selectBackground: colors.white,
     },
   },
   light: {
@@ -133,6 +135,7 @@ export const themes: Record<ThemeVariant, Theme> = {
       navBarBackground: 'primaryLight',
       navBarText: 'white',
       previewTitle: 'primaryDark',
+      selectBackground: grays.light,
     },
   },
 };
