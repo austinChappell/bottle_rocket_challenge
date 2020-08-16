@@ -12,12 +12,12 @@ import { useAppDispatch } from 'state/store';
 import styled, { useAppTheme } from 'utils/styled';
 
 // Local Variables
-const Nav = styled.nav({
+const StyledNav = styled.nav({
   position: 'sticky',
   top: 0,
   zIndex: 1,
 });
-const Wrapper = styled.div(({ theme }) => ({
+const Container = styled.div(({ theme }) => ({
   alignItems: 'center',
   backgroundColor: colors[theme.palette.navBarBackground],
   display: 'flex',
@@ -52,7 +52,7 @@ const Box = styled.div({
 });
 
 // Component Definition
-const Header: React.FC = () => {
+const Nav: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const theme = useAppTheme();
@@ -72,12 +72,12 @@ const Header: React.FC = () => {
   }, [dispatch, navRefHeight]);
 
   return (
-    <Nav ref={navRef}>
+    <StyledNav ref={navRef}>
       <TopItemContainer>
         <ThemeToggleButton />
       </TopItemContainer>
 
-      <Wrapper>
+      <Container>
         <Box>
           {leftElement}
         </Box>
@@ -93,10 +93,9 @@ const Header: React.FC = () => {
         <Box>
           {rightElement}
         </Box>
-
-      </Wrapper>
-    </Nav>
+      </Container>
+    </StyledNav>
   );
 };
 
-export default Header;
+export default Nav;

@@ -6,7 +6,7 @@ import colors from 'constants/colors';
 import styled from 'utils/styled';
 
 // Local Dependencies
-import Header from './Header';
+import Header from './Nav';
 
 // Local Variables
 const Body = styled.div({
