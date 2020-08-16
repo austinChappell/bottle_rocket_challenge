@@ -7,6 +7,8 @@ import { RestaurantsAction } from 'state/reducers/restaurants';
 import { ThenArg } from 'types';
 import { Restaurant } from 'types/api';
 
+// The image urls coming in from the api are http protocol.
+// We are changing them to https for increased security.
 const normalizeRestaurants = (restaurants: Restaurant[]): Restaurant[] => {
   const secureImageUrl = (url: string) =>
     url.replace('http://', 'https://')
