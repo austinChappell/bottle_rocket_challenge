@@ -30,6 +30,7 @@ const Wrapper = styled.div<WrapperProps>((props) => ({
   backgroundColor: props.theme.backgroundColor,
   bottom: 0,
   left: 0,
+  overflowY: 'auto',
   paddingTop: props.navHeight,
   position: 'fixed',
   right: 0,

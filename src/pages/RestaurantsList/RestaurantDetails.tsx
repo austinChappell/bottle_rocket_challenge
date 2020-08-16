@@ -22,16 +22,6 @@ interface Props {
 const mobilePadding = 12;
 const tabletPadding = 24;
 const desktopPadding = 32;
-const MapContainer = styled.div({
-  height: 180,
-
-  [`${mediaQueries.isTabletMin}`]: {
-    height: 250,
-  },
-  [`${mediaQueries.isDesktopMin}`]: {
-    height: 400,
-  },
-});
 const NameBanner = styled.div({
   backgroundColor: colors.primaryDark,
   display: 'flex',
@@ -71,14 +61,11 @@ const RestaurantDetails: React.FC<Props> = ({
 
   return (
     <div>
-      <MapContainer>
-        <Map
-          defaultZoom={15}
-          mapHeight="100%"
-          readOnly
-          restaurants={[restaurant]}
-        />
-      </MapContainer>
+      <Map
+        defaultZoom={15}
+        readOnly
+        restaurants={[restaurant]}
+      />
 
       <NameBanner>
         <SectionTitleText ignoreTheme>

@@ -32,6 +32,7 @@ const TitleContainer = styled.div({
 });
 const Section = styled.section({
   flexGrow: 1,
+  minHeight: 200,
   padding: '24px 24px',
 });
 const Wrapper = styled.div({

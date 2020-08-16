@@ -12,13 +12,11 @@ import { Theme } from 'utils/styled';
 
 // Local Dependencies
 import CurrentLocationIcon from './CurrentLocationIcon';
+import MapContainer from './MapContainer';
 import Pin from './Pin';
 
 // Local Typings
-interface WrapperProps {
-  mapHeight?: number | string;
-}
-export interface MapProps extends WrapperProps {
+export interface MapProps {
   center?: GoogleMapReactProps['center'];
   defaultZoom?: number;
   includeCurrentLocation?: boolean;
@@ -28,17 +26,16 @@ export interface MapProps extends WrapperProps {
 }
 
 // Local Variables
-const Wrapper = styled.div<WrapperProps>(({ mapHeight }) => ({
-  height: mapHeight,
+const Wrapper = styled.div({
+  height: '100%',
   width: '100%',
-}));
+});
 
 // Component Definition
 const Map: React.FC<MapProps> = ({
   center,
   defaultZoom = 14,
   includeCurrentLocation = false,
-  mapHeight = 500,
   onClickRestaurant,
   readOnly,
   restaurants,
@@ -58,42 +55,44 @@ const Map: React.FC<MapProps> = ({
   }, [defaultCenter, firstRestaurant]);
 
   return (
-    <Wrapper mapHeight={mapHeight}>
-      {defaultCenter && (
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: envKeys.REACT_APP_GOOGLE_MAPS_API_KEY }}
-          center={center}
-          defaultCenter={defaultCenter}
-          defaultZoom={defaultZoom}
-          options={{
-            backgroundColor: theme.backgroundColor,
-            styles: theme.mapStyles,
-          }}
-        >
-          {restaurants.map((restaurant) => {
-            const { location } = restaurant;
+    <MapContainer>
+      <Wrapper>
+        {defaultCenter && (
+          <GoogleMapReact
+            bootstrapURLKeys={{ key: envKeys.REACT_APP_GOOGLE_MAPS_API_KEY }}
+            center={center}
+            defaultCenter={defaultCenter}
+            defaultZoom={defaultZoom}
+            options={{
+              backgroundColor: theme.backgroundColor,
+              styles: theme.mapStyles,
+            }}
+          >
+            {restaurants.map((restaurant) => {
+              const { location } = restaurant;
 
-            return (
-              <Pin
-                key={restaurant.name}
-                lat={location.lat}
-                lng={location.lng}
-                onClickRestaurant={onClickRestaurant}
-                readOnly={readOnly}
-                restaurant={restaurant}
+              return (
+                <Pin
+                  key={restaurant.name}
+                  lat={location.lat}
+                  lng={location.lng}
+                  onClickRestaurant={onClickRestaurant}
+                  readOnly={readOnly}
+                  restaurant={restaurant}
+                />
+              );
+            })}
+
+            {includeCurrentLocation && geoLocation && (
+              <CurrentLocationIcon
+                lat={geoLocation.coords.latitude}
+                lng={geoLocation.coords.longitude}
               />
-            );
-          })}
-
-          {includeCurrentLocation && geoLocation && (
-            <CurrentLocationIcon
-              lat={geoLocation.coords.latitude}
-              lng={geoLocation.coords.longitude}
-            />
-          )}
-        </GoogleMapReact>
-      )}
-    </Wrapper>
+            )}
+          </GoogleMapReact>
+        )}
+      </Wrapper>
+    </MapContainer>
   );
 };
 

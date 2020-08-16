@@ -14,6 +14,10 @@ interface Props {
 
 // Local Variables
 const StyledInput = styled.input(({ theme }) => ({
+  '&::placeholder': {
+    color: `${theme.colors.primaryDark}aa`,
+  },
+
   '&:focus': {
     outline: theme.styles.outline,
   },
@@ -23,7 +27,7 @@ const StyledInput = styled.input(({ theme }) => ({
   borderRadius: 4,
   color: theme.colors.primaryDark,
   fontSize: 16,
-  padding: 4,
+  padding: 8,
 }));
 
 // Component Definition

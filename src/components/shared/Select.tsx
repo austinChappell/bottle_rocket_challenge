@@ -31,7 +31,7 @@ const StyledSelect = styled.select(({ theme }) => ({
   cursor: 'pointer',
   display: 'block',
   fontSize: 16,
-  padding: 4,
+  padding: 8,
 }));
 
 // Component Definition
