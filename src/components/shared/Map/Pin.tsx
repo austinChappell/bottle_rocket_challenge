@@ -37,7 +37,7 @@ const Wrapper = styled.div({
       position: 'fixed',
       textAlign: 'center',
       transform: 'translateX(-25%)',
-      width: 60,
+      width: 90,
       zIndex: 10,
     },
 

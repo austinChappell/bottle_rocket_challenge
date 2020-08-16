@@ -1,5 +1,5 @@
 // External Dependencies
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { useTheme } from 'emotion-theming';
 import GoogleMapReact, { Props as GoogleMapReactProps } from 'google-map-react';
@@ -39,21 +39,26 @@ const Map: React.FC<MapProps> = ({
   readOnly,
   restaurants,
 }) => {
+  const [defaultCenter, setDefaultCenter] = useState<Restaurant['location'] | null>(null);
+
   const theme = useTheme<Theme>();
 
   const [firstRestaurant] = restaurants;
 
-  console.log('the user center : ', center);
+  useEffect(() => {
+    if (firstRestaurant && !defaultCenter) {
+      setDefaultCenter(firstRestaurant.location);
+    }
+  }, [defaultCenter, firstRestaurant]);
 
   return (
     <Wrapper mapHeight={mapHeight}>
-      {firstRestaurant && (
+      {defaultCenter && (
         <GoogleMapReact
           bootstrapURLKeys={{ key: envKeys.REACT_APP_GOOGLE_MAPS_API_KEY }}
           center={center}
-          defaultCenter={firstRestaurant.location}
+          defaultCenter={defaultCenter}
           defaultZoom={defaultZoom}
-          key={firstRestaurant.name}
           options={{
             backgroundColor: theme.backgroundColor,
             styles: theme.mapStyles,

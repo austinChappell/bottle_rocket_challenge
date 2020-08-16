@@ -10,6 +10,9 @@ export const useSelectRestaurantsIsLoading = () =>
 export const useSelectRestaurants = () =>
   useSelector((state: AppState) => state.restaurants.data);
 
+export const useSelectFilter = () =>
+  useSelector((state: AppState) => state.restaurants.filter);
+
 export const useSelectCategoryFilterOptions = (): SelectOption[] =>
   useSelector((state: AppState) => state.restaurants.categoryFilters.map((filter) => ({
     id: filter.label,

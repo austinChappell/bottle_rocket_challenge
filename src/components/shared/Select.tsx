@@ -39,10 +39,7 @@ const Select: React.FC<Props> = ({
     onChange={onChange}
     value={value}
   >
-    <option
-      selected
-      value=""
-    >
+    <option value="">
       {label}
     </option>
     {options.map((opt) => (
