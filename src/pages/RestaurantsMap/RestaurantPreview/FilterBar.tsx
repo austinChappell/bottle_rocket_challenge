@@ -1,11 +1,11 @@
 // External Dependencies
 import React from 'react';
 import styled from '@emotion/styled';
-import { useSelectField } from 'hooks/useSelectField';
 
 // Internal Dependencies
 import { MapProps } from 'components/shared/Map';
 import Select from 'components/shared/Select';
+import { useSelectField } from 'hooks/useSelectField';
 import { useSelectGeoLocation } from 'state/selectors/general';
 import { useSelectCategoryFilterOptions } from 'state/selectors/restaurants';
 

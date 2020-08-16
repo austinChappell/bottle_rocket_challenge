@@ -71,7 +71,7 @@
           // Packages. `react` related packages come first.
           ["^react", "^@?\\w"],
           // Internal packages.
-          ["^(|api|assets|components|config|constants|pages|services|state|types|utils)(/.*|$)"],
+          ["^(|api|assets|components|config|constants|hooks|pages|services|state|types|utils)(/.*|$)"],
           // Side effect imports.
           ["^\\u0000"],
           // Parent imports. Put `..` last.
