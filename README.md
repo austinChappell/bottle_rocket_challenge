@@ -1,5 +1,9 @@
 This project is a coding challenge for an application at Bottle Rocket.
 
+## Demo
+
+You can also view the [demo application](https://bottle-rocket-challenge.netlify.app/)
+
 ## Setup
 
 Add a `.env` file to the root directoy, mirroring `example.env`.
