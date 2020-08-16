@@ -1,9 +1,11 @@
 import {
-  call, put, takeLatest,
+  call, put, select,
+  takeLatest,
 } from 'redux-saga/effects';
 
 import { getRestaurants } from 'api/restaurants';
-import { RestaurantsAction } from 'state/reducers/restaurants';
+import { AppState } from 'state/reducers';
+import { RestaurantCategoryFilter, RestaurantsAction } from 'state/reducers/restaurants';
 import { ThenArg } from 'types';
 import { Restaurant } from 'types/api';
 
@@ -37,10 +39,44 @@ function* fetchRestaurants() {
   }
 }
 
+function* setCategories() {
+  const data: Restaurant[] = yield select((state: AppState) => state.restaurants.data);
+
+  const categoryFilters: RestaurantCategoryFilter[] = data.reduce((
+    curr: RestaurantCategoryFilter[],
+    prev,
+  ) => {
+    const existingFilter = curr.find((cat) => cat.label === prev.category);
+
+    if (existingFilter) {
+      existingFilter.count += 1;
+    } else {
+      curr.push({
+        count: 1,
+        label: prev.category,
+      });
+    }
+
+    return curr;
+  }, []).sort((a, b) => (a.label > b.label ? 1 : -1));
+
+  yield put<RestaurantsAction>({
+    payload: {
+      categoryFilters,
+    },
+    type: 'RESTAURANTS_SET_CATEGORIES',
+  });
+}
+
 function* restaurantsSaga(): Generator {
   yield takeLatest<RestaurantsAction['type']>(
     'RESTAURANTS_GET_REQUEST',
     fetchRestaurants,
+  );
+
+  yield takeLatest<RestaurantsAction['type']>(
+    'RESTAURANTS_GET_SUCCESS',
+    setCategories,
   );
 }
 
